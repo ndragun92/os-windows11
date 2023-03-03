@@ -1,0 +1,55 @@
+@import "../fonts/fonts.css";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap");
+body {
+  font-family: "Segoe UI", Noto Sans, Inter var, ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif,
+    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  -webkit-font-smoothing: antialiased;
+  @apply text-[var(--global-text-color)] bg-[var(--global-bg-color)] select-none;
+}
+
+.el__manipulate-window {
+  user-select: none;
+  -ms-touch-action: none;
+  touch-action: none;
+  @apply min-h-[235px] min-w-[145px] select-none pointer-events-auto;
+  //@apply resize;
+  &--transition {
+    @apply transition-all duration-200;
+  }
+  &--maximized {
+    @apply resize-none;
+  }
+  &--handle {
+    @apply absolute top-[4px] right-[4px] bottom-0 left-[4px];
+  }
+}
+
+:root {
+  --global-accent-color: #0078d4;
+  --global-icons-color: #4cc2ff;
+}
+
+[data-theme="theme1"] {
+  --global-text-color: #000000;
+  --global-bg-color: #ffffff;
+  --global-icons-color: #0078d4;
+  --global-context-menu-bg-color: rgba(255, 255, 255, 0.75);
+  --global-context-menu-separator-color: rgba(0, 0, 0, 0.05);
+  --global-context-menu-item-bg-color--hover: rgba(0, 0, 0, 0.05);
+  --global-context-menu-item-icon-border-color: rgba(0, 0, 0, 1);
+  --global-context-menu-sub-bg-color: rgba(255, 255, 255, 0.9);
+  --global-context-menu-sub-item-bg-color--hover: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="theme2"] {
+  --global-text-color: #ffffff;
+  --global-bg-color: #000000;
+  --global-icons-color: #4cc2ff;
+  --global-context-menu-bg-color: rgba(0, 0, 0, 0.25);
+  --global-context-menu-separator-color: rgba(255, 255, 255, 0.10);
+  --global-context-menu-item-bg-color--hover: rgba(0, 0, 0, 0.05);
+  --global-context-menu-item-icon-border-color: rgba(255, 255, 255, 1);
+  --global-context-menu-sub-bg-color: rgba(21, 34, 76, 0.9);
+  --global-context-menu-sub-item-bg-color--hover: rgba(0, 0, 0, 0.15);
+}

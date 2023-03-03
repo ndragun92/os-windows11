@@ -1,0 +1,46 @@
+{
+  "name": "windows11nuxt",
+  "description": "Windows 11 made in Nuxt.js and Tailwind CSS",
+  "version": "0.1.1",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "start": "node .output/server/index.mjs",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "engines": {
+    "node": "18.12.1"
+  },
+  "devDependencies": {
+    "@interactjs/types": "^1.10.17",
+    "@nuxt/image-edge": "^1.0.0-27821548.ab054e4",
+    "@nuxtjs/tailwindcss": "^6.4.1",
+    "@typescript-eslint/eslint-plugin": "^5.53.0",
+    "@typescript-eslint/parser": "^5.53.0",
+    "@vueuse/core": "^9.13.0",
+    "@vueuse/nuxt": "^9.13.0",
+    "eslint": "^8.34.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-nuxt": "^4.0.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-vue": "^9.9.0",
+    "nuxt": "^3.2.2",
+    "nuxt-icon": "^0.3.2",
+    "prettier": "^2.8.4",
+    "sass": "^1.58.3",
+    "sass-loader": "^13.2.0",
+    "vite-plugin-eslint": "^1.8.1"
+  },
+  "dependencies": {
+    "@morev/vue-transitions": "^2.3.6",
+    "@pinia/nuxt": "^0.4.7",
+    "@tailwindcss/line-clamp": "^0.4.2",
+    "dayjs": "^1.11.7",
+    "interactjs": "^1.10.17",
+    "lodash-es": "^4.17.21",
+    "pinia": "^2.0.27"
+  }
+}

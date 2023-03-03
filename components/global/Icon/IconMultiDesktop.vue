@@ -1,0 +1,39 @@
+<template>
+  <svg
+    width="31"
+    height="28"
+    viewBox="0 0 31 28"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect
+      x="0.5"
+      y="8"
+      width="23"
+      height="20"
+      rx="2"
+      fill="url(#paint0_linear_603_4086)"
+    />
+    <rect
+      x="7.5"
+      width="23"
+      height="21"
+      rx="2"
+      fill="white"
+      fill-opacity="0.6"
+    />
+    <defs>
+      <linearGradient
+        id="paint0_linear_603_4086"
+        x1="12"
+        y1="8"
+        x2="12"
+        y2="28"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stop-color="#5E5E5E" />
+        <stop offset="1" stop-color="#404040" />
+      </linearGradient>
+    </defs>
+  </svg>
+</template>
