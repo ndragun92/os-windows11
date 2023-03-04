@@ -1,6 +1,9 @@
 # Windows 11 in Nuxt 3 + Tailwind CSS
 
+[Website preview URL](https://os-windows11.vercel.app/)
+
 If you are interested in Nuxt.js visit [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+
 If you are interested in Tailwind visit [TailwindCSS documentation](https://tailwindcss.com/) to learn more.
 
 ## Setup
