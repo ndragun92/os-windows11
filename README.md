@@ -5,7 +5,7 @@ Windows 11 in Nuxt 3 + Tailwind CSS
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/ndragun92)
 
-This is an open source project made in the hope to replicate the Windows 11 desktop experience on web using standard web technologies like Nuxt.js, SCSS, Tailwind CSS.
+This is an open-source project made in the hope to replicate the Windows 11 desktop experience on the web using standard web technologies like Nuxt.js, SCSS, Tailwind CSS.
 
 ## Notice
 
@@ -31,13 +31,13 @@ Coming soon...
 
 # Why
 
-Since this is a complex project it will be valuable source to a lot of developers out there
+Since this is a complex project it will be a valuable source for a lot of developers out there
 
 # Features
 
 [Check here](https://github.com/ndragun92/os-windows11/blob/main/FEATURES.md)
 
-📑 [If you have own idea submit it here](https://github.com/ndragun92/os-windows11/discussions/categories/ideas)
+📑 [If you have your own idea submit it here](https://github.com/ndragun92/os-windows11/discussions/categories/ideas)
 
 # Stack
 
@@ -49,15 +49,15 @@ Since this is a complex project it will be valuable source to a lot of developer
 ## FAQ
 
 - Is this the full operating system?
-    - No, This is not a full operating system, and It is also not affiliated by Microsoft in any way.
+    - No, This is not an entire operating system, and It is also not affiliated with Microsoft in any way.
 - How long did it take?
-    - I have started with this project around 1 week ago
+    - I started with this project around 1 week ago
 - Did you use any UI/Library?
     - No.
 - Can I contribute?
-    - Yes, you can! Open an issue, create a pull request, head over to [discussions](https://github.com/ndragun92/os-windows11/discussions) or join the [Discord](https://discord.gg/rcU9d5QyST).
+    - Yes, you can! Open an issue, create a pull request, head over to [discussions](https://github.com/ndragun92/os-windows11/discussions), or join the [Discord](https://discord.gg/rcU9d5QyST).
 - Where did you get the inspiration from, if you have?
-    - To be honest since I am fan of Windows 11 I came to random idea to recreate it in browser
+    - To be honest, since I am a fan of Windows 11 I came to the random idea to recreate it in the browser
 
 ## 🌟 Star this project
 
@@ -72,7 +72,7 @@ Since this is a complex project it will be valuable source to a lot of developer
 
 ### Known Issues
 
-- Blur not working in Firefox browser.
+- Blur not working in the Firefox browser.
 
 ###### Solution:
 
