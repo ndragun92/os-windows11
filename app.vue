@@ -126,3 +126,22 @@ const usePersonalization = usePersonalizationStore();
 // TODO: Change to cookies with 1 day interval
 const showAboutModal = ref(true);
 </script>
+
+<style lang="scss">
+@media only screen and (max-width: 799px) {
+  body {
+    @apply hidden;
+  }
+  html {
+    &:after {
+      content: "Minimum required resolution has to be 800x600";
+      @apply fixed top-0 right-0 bottom-0 left-0 bg-white text-black flex items-center justify-center text-center p-4 font-medium text-lg;
+    }
+  }
+}
+@media only screen and (max-height: 599px) {
+  body {
+    @apply hidden;
+  }
+}
+</style>
