@@ -38,6 +38,7 @@
     "@morev/vue-transitions": "^2.3.6",
     "@pinia/nuxt": "^0.4.7",
     "@tailwindcss/line-clamp": "^0.4.2",
+    "@vercel/analytics": "^0.1.11",
     "dayjs": "^1.11.7",
     "interactjs": "^1.10.17",
     "lodash-es": "^4.17.21",
