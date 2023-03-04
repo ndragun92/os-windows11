@@ -5,7 +5,7 @@ Windows 11 in Nuxt 3 + Tailwind CSS
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/ndragun92)
 
-This is an open source project made in the hope to replicate the Windows 11 desktop experience on webm using standard web technologies like Nuxt.js, SCSS, Tailwind CSS.
+This is an open source project made in the hope to replicate the Windows 11 desktop experience on web using standard web technologies like Nuxt.js, SCSS, Tailwind CSS.
 
 ## Notice
 
