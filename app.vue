@@ -123,8 +123,11 @@ import { usePersonalizationStore } from "~/store/personalizationStore";
 
 const usePersonalization = usePersonalizationStore();
 
-// TODO: Change to cookies with 1 day interval
-const showAboutModal = ref(true);
+const showAboutModal = useCookie("showAboutModal", {
+  default: () => true,
+  watch: "shallow",
+  maxAge: 259200, // Show about modal every 3 days
+});
 </script>
 
 <style lang="scss">
