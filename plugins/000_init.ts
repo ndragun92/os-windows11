@@ -2,6 +2,11 @@ import packageJSON from "../package.json";
 
 export default defineNuxtPlugin(async (nuxtApp) => {
   const version = packageJSON.version;
+  const currentVersion = useCookie("currentVersion", {
+    default: () => version,
+    watch: "shallow",
+    maxAge: 2592000, // Reset local storage data every 30 days
+  });
   let host = "";
   // Get host in case of server side request
   if (import.meta.env.SSR) {
@@ -14,4 +19,5 @@ export default defineNuxtPlugin(async (nuxtApp) => {
   nuxtApp.provide("app_origin", origin.origin);
   nuxtApp.provide("app_hostname", origin.hostname);
   nuxtApp.provide("app_version", version);
+  nuxtApp.provide("app_current_version", currentVersion);
 });

@@ -5,6 +5,7 @@
       :data-route-path="$route?.path"
       :data-theme="usePersonalization.theme"
       :data-app-version="nuxtApp?.$app_version || '0.0.0'"
+      :data-app-current-version="nuxtApp?.$app_current_version || '0.0.0'"
     >
       <Head>
         <Title>Windows 11 ❤️ | by Nemanja Dragun</Title>
