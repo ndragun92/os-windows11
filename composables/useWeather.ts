@@ -61,19 +61,23 @@ export default function useWeather() {
   });
 
   const getLocation = async () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(showPosition);
-      const checkPermission = await navigator.permissions.query({
-        name: "geolocation",
-      });
-      if (checkPermission.state === "denied") {
-        loading.value = false;
-      }
-    } else {
-      alert("Geolocation is not supported by this browser.");
-      notSupported.value = true;
-      loading.value = false;
-    }
+    await showPosition({
+      coords: { latitude: 52.520008, longitude: 13.404954 },
+    });
+    // TODO: Move location request in settings and fallback to Berlin as a default
+    // if (navigator.geolocation) {
+    //   navigator.geolocation.getCurrentPosition(showPosition);
+    //   const checkPermission = await navigator.permissions.query({
+    //     name: "geolocation",
+    //   });
+    //   if (checkPermission.state === "denied") {
+    //     loading.value = false;
+    //   }
+    // } else {
+    //   alert("Geolocation is not supported by this browser.");
+    //   notSupported.value = true;
+    //   loading.value = false;
+    // }
   };
 
   const showPosition = async (position) => {

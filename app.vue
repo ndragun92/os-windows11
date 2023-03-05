@@ -123,8 +123,11 @@ import { usePersonalizationStore } from "~/store/personalizationStore";
 
 const usePersonalization = usePersonalizationStore();
 
-// TODO: Change to cookies with 1 day interval
-const showAboutModal = ref(true);
+const showAboutModal = useCookie("showAboutModal", {
+  default: () => true,
+  watch: "shallow",
+  maxAge: 259200, // Show about modal every 3 days
+});
 </script>
 
 <style lang="scss">
@@ -134,7 +137,7 @@ const showAboutModal = ref(true);
   }
   html {
     &:after {
-      content: "Minimum required resolution has to be 800x600";
+      content: "Minimum required resolution/size has to be 800x600. Mobile devices are not supported.";
       @apply fixed top-0 right-0 bottom-0 left-0 bg-white text-black flex items-center justify-center text-center p-4 font-medium text-lg;
     }
   }
@@ -142,6 +145,12 @@ const showAboutModal = ref(true);
 @media only screen and (max-height: 599px) {
   body {
     @apply hidden;
+  }
+  html {
+    &:after {
+      content: "Minimum required resolution/size has to be 800x600. Mobile devices are not supported.";
+      @apply fixed top-0 right-0 bottom-0 left-0 bg-white text-black flex items-center justify-center text-center p-4 font-medium text-lg;
+    }
   }
 }
 </style>
