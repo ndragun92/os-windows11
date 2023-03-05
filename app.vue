@@ -39,7 +39,9 @@
         <Link rel="apple-touch-startup-image" href="/favicon.png" />
       </Head>
     </Html>
-    <NuxtPage />
+    <client-only>
+      <NuxtPage />
+    </client-only>
   </NuxtLayout>
   <transition-expand appear>
     <div
