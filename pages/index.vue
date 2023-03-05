@@ -33,7 +33,19 @@
             )
           "
           @dragend="onDragEnd"
-          @dblclick="log().onAlert('Coming soon')"
+          @dblclick="
+            items?.data?.find((obj) => obj.position === slotIndex).app
+              ? dockStore.isActiveApp(
+                  items?.data?.find((obj) => obj.position === slotIndex).app
+                )
+                ? dockStore.setFocusedWindow(
+                    items?.data?.find((obj) => obj.position === slotIndex).app
+                  )
+                : dockStore.onActivateApp(
+                    items?.data?.find((obj) => obj.position === slotIndex).app
+                  )
+              : log().onAlert('Coming soon')
+          "
         >
           <template #icon>
             <component

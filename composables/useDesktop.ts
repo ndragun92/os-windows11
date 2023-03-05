@@ -1,4 +1,5 @@
 import { useStorage } from "@vueuse/core";
+import { AppEnum } from "~/enums/app.enum";
 export default function useDesktop() {
   const items = useStorage("desktop--item", {
     data: [
@@ -8,12 +9,14 @@ export default function useDesktop() {
         name: "File Explorer",
         icon: true,
         iconName: "icon-file-explorer",
+        app: AppEnum.fileExplorer,
       },
       {
         position: 3,
         name: "Microsoft Edge",
         icon: true,
         iconName: "icon-microsoft-edge",
+        app: AppEnum.microsoftEdge,
       },
       {
         position: 4,
