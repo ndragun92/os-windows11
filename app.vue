@@ -137,7 +137,7 @@ const showAboutModal = useCookie("showAboutModal", {
   }
   html {
     &:after {
-      content: "Minimum required resolution has to be 800x600";
+      content: "Minimum required resolution/size has to be 800x600. Mobile devices are not supported.";
       @apply fixed top-0 right-0 bottom-0 left-0 bg-white text-black flex items-center justify-center text-center p-4 font-medium text-lg;
     }
   }
@@ -145,6 +145,12 @@ const showAboutModal = useCookie("showAboutModal", {
 @media only screen and (max-height: 599px) {
   body {
     @apply hidden;
+  }
+  html {
+    &:after {
+      content: "Minimum required resolution/size has to be 800x600. Mobile devices are not supported.";
+      @apply fixed top-0 right-0 bottom-0 left-0 bg-white text-black flex items-center justify-center text-center p-4 font-medium text-lg;
+    }
   }
 }
 </style>
