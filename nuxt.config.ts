@@ -2,6 +2,7 @@
 import eslintPlugin from "vite-plugin-eslint";
 
 export default defineNuxtConfig({
+  // ssr: false,
   experimental: {
     payloadExtraction: false,
   },
@@ -44,5 +45,7 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     // https://github.com/MorevM/vue-transitions
     "@morev/vue-transitions/nuxt",
+    // https://v1.image.nuxtjs.org/get-started/
+    "@nuxt/image-edge",
   ],
 });

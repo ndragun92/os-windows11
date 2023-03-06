@@ -13,7 +13,7 @@
           @click="log().onAlert('Coming soon')"
         >
           <template #icon>
-            <img
+            <el-image
               class="block w-[32px] h-[32px]"
               :src="`/images/weather/${icon}.png`"
               :alt="icon"
@@ -80,7 +80,7 @@
                 placeholder="Search"
                 @keydown.enter="log().onAlert('Coming soon')"
               />
-              <img
+              <el-image
                 class="pointer-events-none block absolute -right-[3px] -bottom-[1px]"
                 src="/images/icons/search-dolphin.png"
                 alt="Search dolphin"

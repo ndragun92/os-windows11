@@ -57,7 +57,7 @@
               "
               class="w-[50px] h-[50px] -mt-[25px] p-[5px]"
             />
-            <img
+            <el-image
               v-else
               class="block w-[50px] h-[50px] -mt-[25px] p-[5px]"
               :src="
