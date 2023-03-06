@@ -50,7 +50,7 @@ export default function useElementValidation() {
       console.info("window is offscreen on right side");
       offscreen.right = true;
     }
-    if (windowTop > screenHeight - 100) {
+    if (windowTop > screenHeight - 85) {
       console.log("window is offscreen on bottom side");
       offscreen.bottom = true;
     }
@@ -58,7 +58,7 @@ export default function useElementValidation() {
       console.log("window is offscreen on left side");
       offscreen.left = true;
     }
-    if (windowTop - 50 < 0) {
+    if (windowTop < 0) {
       console.log("window is offscreen on top side");
       offscreen.bottom = true;
     }

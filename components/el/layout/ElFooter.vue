@@ -17,6 +17,7 @@
               class="block w-[32px] h-[32px]"
               :src="`/images/weather/${icon}.png`"
               :alt="icon"
+              :lazy="false"
             />
           </template>
           <template #name
@@ -84,6 +85,7 @@
                 class="pointer-events-none block absolute -right-[3px] -bottom-[1px]"
                 src="/images/icons/search-dolphin.png"
                 alt="Search dolphin"
+                :lazy="false"
               />
             </div>
           </li>
@@ -152,7 +154,7 @@
       </div>
       <div>
         <el-button
-          :tooltip="`Friday, 24 February 2023 <br/> <br/> Fri 21:16 (Local time) <br/> Fri 20:16 (London time)`"
+          :tooltip="`${currentDateFull?.value} <br/> <br/> ${currentDateShort?.value} (Local time) <br/> ${alternativeDateShort} (London time)`"
           tooltip-position-y-custom="bottom-[calc(100%+15px)]"
           tooltip-class="text-left"
           class="gap-0.5 py-0.5 px-2 text-xs flex-col text-right"
@@ -224,6 +226,9 @@ onMounted(() => getLocation());
 
 const currentTime = ref<any>(null);
 const currentDate = ref<any>(null);
+const currentDateShort = ref<any>(null);
+const alternativeDateShort = ref<any>(null);
+const currentDateFull = ref<any>(null);
 const showMenu = ref(false);
 const elStartMenu = ref<HTMLElement | null>(null);
 
@@ -232,6 +237,11 @@ onClickOutside(elStartMenu, () => (showMenu.value = false));
 onMounted(() => {
   currentTime.value = useDateFormat(useNow(), "HH:mm");
   currentDate.value = useDateFormat(useNow(), "DD/MM/YYYY");
+  currentDateShort.value = useDateFormat(useNow(), "ddd HH:mm");
+  currentDateFull.value = useDateFormat(useNow(), "dddd, DD MMMM YYYY");
+  alternativeDateShort.value = dayjs(new Date())
+    .tz("Europe/London")
+    .format("ddd HH:mm");
 });
 </script>
 
@@ -295,10 +305,10 @@ footer {
   --el-footer-bg-color: rgba(68, 68, 68, 0.4);
   --el-footer-bg-color-overlay: rgba(27, 31, 47, 0.5);
   /*SEARCH INPUT*/
-  --el-footer-input-bg-color: rgba(39, 58, 81, 0.6);
-  --el-footer-input-bg-color-hover: rgba(39, 58, 81, 0.5);
+  --el-footer-input-bg-color: rgba(65, 84, 107, 0.5);
+  --el-footer-input-bg-color-hover: rgba(65, 84, 107, 0.6);
   --el-footer-input-text-color: rgba(255, 255, 255, 1);
-  --el-footer-input-border-color: rgba(41, 61, 88, 0.6);
+  --el-footer-input-border-color: rgba(41, 61, 88, 0.2);
   /*WEATHER*/
   --el-footer-weather-text-color: #a7a7a7;
   /*TIME*/
