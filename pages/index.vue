@@ -88,28 +88,27 @@
       <ul
         class="whitespace-nowrap w-[267px] border border-white border-opacity-5 p-[5px] bg-[var(--global-context-menu-bg-color)] backdrop-blur-[20px] rounded-lg text-sm gap-[5px] flex flex-col font-light"
       >
-        <li
-          class="relative flex items-center justify-between hover:bg-[var(--global-context-menu-item-bg-color--hover)] cursor-pointer duration-200 rounded px-[10px] py-[6px]"
+        <lazy-el-context-menu-item
           @mouseenter="contextMenuDesktopShowSub.data.view = true"
           @mouseleave="contextMenuDesktopShowSub.data.view = false"
         >
-          <div class="flex items-center gap-[12px]">
+          <template #icon>
             <Icon size="20" name="prime:th-large" />
-            <span>View</span>
-          </div>
-          <Icon size="16" name="ic:round-keyboard-arrow-right" />
-          <transition-expand>
-            <context-menu-desktop-view
-              v-if="contextMenuDesktopShowSub.data.view"
-            />
-          </transition-expand>
-        </li>
-        <li
-          class="relative flex items-center justify-between hover:bg-[var(--global-context-menu-item-bg-color--hover)] cursor-pointer duration-200 rounded px-[10px] py-[6px]"
+          </template>
+          View
+          <template #submenu>
+            <transition-expand>
+              <context-menu-desktop-view
+                v-if="contextMenuDesktopShowSub.data.view"
+              />
+            </transition-expand>
+          </template>
+        </lazy-el-context-menu-item>
+        <lazy-el-context-menu-item
           @mouseenter="contextMenuDesktopShowSub.data.sortBy = true"
           @mouseleave="contextMenuDesktopShowSub.data.sortBy = false"
         >
-          <div class="flex items-center gap-[12px]">
+          <template #icon>
             <div class="relative">
               <Icon
                 class="opacity-0"
@@ -127,30 +126,30 @@
                 name="fluent:arrow-sort-down-24-regular"
               />
             </div>
-            <span>Sort by</span>
-          </div>
-          <Icon size="16" name="ic:round-keyboard-arrow-right" />
-          <transition-expand>
-            <context-menu-desktop-sort-by
-              v-if="contextMenuDesktopShowSub.data.sortBy"
-            />
-          </transition-expand>
-        </li>
-        <li
+          </template>
+          Sort by
+          <template #submenu>
+            <transition-expand>
+              <context-menu-desktop-sort-by
+                v-if="contextMenuDesktopShowSub.data.sortBy"
+              />
+            </transition-expand>
+          </template>
+        </lazy-el-context-menu-item>
+        <lazy-el-context-menu-item
           class="flex items-center justify-between hover:bg-[var(--global-context-menu-item-bg-color--hover)] cursor-pointer duration-200 rounded px-[10px] py-[6px]"
         >
-          <div class="flex items-center gap-[12px]">
+          <template #icon>
             <Icon size="20" name="material-symbols:refresh-rounded" />
-            <span>Refresh</span>
-          </div>
-        </li>
-        <li
-          class="h-[1px] w-full bg-[var(--global-context-menu-separator-color)]"
-        />
-        <li
-          class="flex items-center justify-between hover:bg-[var(--global-context-menu-item-bg-color--hover)] cursor-pointer duration-200 rounded px-[10px] py-[6px]"
+          </template>
+          Refresh
+        </lazy-el-context-menu-item>
+        <lazy-el-context-menu-divider />
+        <lazy-el-context-menu-item
+          @mouseenter="contextMenuDesktopShowSub.data.new = true"
+          @mouseleave="contextMenuDesktopShowSub.data.new = false"
         >
-          <div class="flex items-center gap-[12px]">
+          <template #icon>
             <div
               class="border border-[var(--global-context-menu-item-icon-border-color)] rounded-full flex items-center justify-center w-[20px] h-[20px]"
             >
@@ -160,17 +159,19 @@
                 name="ic:baseline-add"
               />
             </div>
-            <span>New</span>
-          </div>
-          <Icon size="16" name="ic:round-keyboard-arrow-right" />
-        </li>
-        <li
-          class="h-[1px] w-full bg-[var(--global-context-menu-separator-color)]"
-        />
-        <li
-          class="flex items-center justify-between hover:bg-[var(--global-context-menu-item-bg-color--hover)] cursor-pointer duration-200 rounded px-[10px] py-[6px]"
-        >
-          <div class="flex items-center gap-[12px]">
+          </template>
+          New
+          <template #submenu>
+            <transition-expand>
+              <context-menu-desktop-sort-by
+                v-if="contextMenuDesktopShowSub.data.new"
+              />
+            </transition-expand>
+          </template>
+        </lazy-el-context-menu-item>
+        <lazy-el-context-menu-divider />
+        <lazy-el-context-menu-item>
+          <template #icon>
             <div class="relative flex items-center justify-center">
               <Icon
                 size="20"
@@ -182,42 +183,34 @@
                 name="typcn:cog"
               />
             </div>
-            <span>Display settings</span>
-          </div>
-        </li>
-        <li
-          class="flex items-center justify-between hover:bg-[var(--global-context-menu-item-bg-color--hover)] cursor-pointer duration-200 rounded px-[10px] py-[6px]"
-        >
-          <div class="flex items-center gap-[12px]">
+          </template>
+          Display settings
+        </lazy-el-context-menu-item>
+        <lazy-el-context-menu-item>
+          <template #icon>
             <icon-personalize class="w-[20px] h-[20px]" />
-            <span>Personalize</span>
-          </div>
-        </li>
-        <li
-          class="h-[1px] w-full bg-[var(--global-context-menu-separator-color)]"
-        />
-        <li
-          class="flex items-center justify-between hover:bg-[var(--global-context-menu-item-bg-color--hover)] cursor-pointer duration-200 rounded px-[10px] py-[6px]"
-        >
-          <div class="flex items-center gap-[12px]">
+          </template>
+          Personalize
+        </lazy-el-context-menu-item>
+        <lazy-el-context-menu-divider />
+        <lazy-el-context-menu-item>
+          <template #icon>
             <icon-terminal class="w-[20px] h-[20px]" />
-            <span>Open in Terminal</span>
-          </div>
-        </li>
-        <li
-          class="h-[1px] w-full bg-[var(--global-context-menu-separator-color)]"
-        />
-        <li
-          class="flex items-center justify-between hover:bg-[var(--global-context-menu-item-bg-color--hover)] cursor-pointer duration-200 rounded px-[10px] py-[6px]"
-        >
-          <div class="flex items-center gap-[12px]">
+          </template>
+          Open in Terminal
+        </lazy-el-context-menu-item>
+        <lazy-el-context-menu-divider />
+        <lazy-el-context-menu-item>
+          <template #icon>
             <Icon size="20" name="iconoir:scale-frame-enlarge" />
-            <span>Show more options</span>
-          </div>
-          <div>
-            <small class="text-xxs">Shift+F10</small>
-          </div>
-        </li>
+          </template>
+          Show more options
+          <template #extra>
+            <div>
+              <small class="text-xxs">Shift+F10</small>
+            </div>
+          </template>
+        </lazy-el-context-menu-item>
       </ul>
     </lazy-el-context-menu>
     <lazy-transition-scale>
@@ -287,7 +280,7 @@ const onDragStart = (e, n) => {
 
 const onDragEnd = () => {
   dragging.value = false;
-  console.log("onDragEnd");
+  console.info("onDragEnd");
 };
 const onDragover = (e) => {
   e.preventDefault();
@@ -371,6 +364,7 @@ const contextMenuDesktopShowSub = reactive({
   data: {
     view: false,
     sortBy: false,
+    new: false,
   },
 });
 </script>
