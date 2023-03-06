@@ -119,7 +119,8 @@ export default function useManipulateWindow(
 
   watch(
     () => height.value,
-    () => {
+    async () => {
+      await windowOffscreenValidation();
       if (maximized.value) {
         wrapperStyle.value.data.height = `${height.value}px`;
       }
