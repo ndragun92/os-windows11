@@ -6,7 +6,7 @@
       background-repeat: no-repeat;
       background-position: center center;
     "
-    :style="{ backgroundImage: `url('/images/gallery/${bgImage}.jpg')` }"
+    :style="backgroundStyles"
   >
     <div id="desktop-container" class="w-full flex-1 h-full overflow-hidden">
       <slot />
@@ -26,6 +26,11 @@ import { usePersonalizationStore } from "~/store/personalizationStore";
 import ElFooter from "~/components/el/layout/ElFooter.vue";
 
 const usePersonalization = usePersonalizationStore();
+const $img = useImage();
+const backgroundStyles = computed(() => {
+  const imgUrl = $img(`/images/gallery/${bgImage.value}.jpg`);
+  return { backgroundImage: `url('${imgUrl}')` };
+});
 
 const bgImage = computed(() => {
   switch (usePersonalization.theme) {
