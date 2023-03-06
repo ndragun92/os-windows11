@@ -19,6 +19,7 @@
 ## Upcoming
 
 ```
+- Footer notification sidebar
 - Context menu Functionality
 - Start Menu UI
 - Widgets Sidebar
