@@ -14,6 +14,7 @@
 - Focus/Active state of icons/tabs
 - Microsoft Edge (Base)
 - OffScreen protection (resets window position if it is offscreen)
+- Blue screen of death and PC restart (You can fake it by going to /bsod)
 ```
 
 ## Upcoming
