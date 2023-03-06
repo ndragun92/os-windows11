@@ -17,6 +17,7 @@
               class="block w-[32px] h-[32px]"
               :src="`/images/weather/${icon}.png`"
               :alt="icon"
+              :lazy="false"
             />
           </template>
           <template #name
@@ -84,6 +85,7 @@
                 class="pointer-events-none block absolute -right-[3px] -bottom-[1px]"
                 src="/images/icons/search-dolphin.png"
                 alt="Search dolphin"
+                :lazy="false"
               />
             </div>
           </li>
