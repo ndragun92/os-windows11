@@ -32,5 +32,40 @@ export default function useElementValidation() {
     return out;
   };
 
-  return { isOutOfViewport };
+  const windowDragOutsideScope = (elem) => {
+    if (!elem) return;
+    // Get element's bounding
+    const bounding = elem.getBoundingClientRect();
+    const { width: windowWidth, top: windowTop, left: windowLeft } = bounding;
+    const { width: screenWidth, height: screenHeight } =
+      document?.body?.getBoundingClientRect();
+    const offscreen = {
+      right: false,
+      bottom: false,
+      left: false,
+      top: false,
+      any: false,
+    };
+    if (windowLeft > screenWidth - 100) {
+      console.info("window is offscreen on right side");
+      offscreen.right = true;
+    }
+    if (windowTop > screenHeight - 100) {
+      console.log("window is offscreen on bottom side");
+      offscreen.bottom = true;
+    }
+    if (windowWidth + 100 + windowLeft < 200) {
+      console.log("window is offscreen on left side");
+      offscreen.left = true;
+    }
+    if (windowTop - 50 < 0) {
+      console.log("window is offscreen on top side");
+      offscreen.bottom = true;
+    }
+    offscreen.any =
+      offscreen.right || offscreen.bottom || offscreen.left || offscreen.top;
+    return offscreen;
+  };
+
+  return { isOutOfViewport, windowDragOutsideScope };
 }

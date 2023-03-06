@@ -91,10 +91,26 @@ export default function useManipulateWindow(
     });
 
   const { width, height } = useWindowSize();
+  const { windowDragOutsideScope } = useElementValidation();
+  const resetWindowPosition = ref(false);
+
+  const windowOffscreenValidation = async () => {
+    if (windowDragOutsideScope(el.value)?.any) {
+      draggableInitialValues.value.data.x = position.x;
+      draggableInitialValues.value.data.y = position.y;
+      resetWindowPosition.value = true;
+      await nextTick(() => (resetWindowPosition.value = false));
+    }
+  };
+
+  onMounted(async () => {
+    await nextTick(async () => await windowOffscreenValidation());
+  });
 
   watch(
     () => width.value,
-    () => {
+    async () => {
+      await windowOffscreenValidation();
       if (maximized.value) {
         wrapperStyle.value.data.width = `${width.value}px`;
       }
@@ -140,6 +156,8 @@ export default function useManipulateWindow(
     maximized,
     draggableInitialValues,
     wrapperStyle,
+    resetWindowPosition,
+    windowOffscreenValidation,
     onMaxMin,
     initResizeObserver,
     resizeWindowOptions,

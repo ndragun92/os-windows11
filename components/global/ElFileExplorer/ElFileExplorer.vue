@@ -158,6 +158,8 @@ const {
   maximized,
   draggableInitialValues,
   wrapperStyle,
+  resetWindowPosition,
+  windowOffscreenValidation,
   onMaxMin,
   initResizeObserver,
   resizeWindowOptions,
@@ -170,6 +172,11 @@ let { x, y, style, isDragging } = useDraggable(el, {
     y: draggableInitialValues.value.data.y,
   },
   handle: handle,
+  onEnd: async () => {
+    await nextTick(async () => {
+      await windowOffscreenValidation();
+    });
+  },
 });
 
 watch(
@@ -177,6 +184,14 @@ watch(
   () => {
     draggableInitialValues.value.data.x = x.value;
     draggableInitialValues.value.data.y = y.value;
+  }
+);
+
+watch(
+  () => resetWindowPosition.value,
+  () => {
+    x.value = draggableInitialValues.value.data.x;
+    y.value = draggableInitialValues.value.data.y;
   }
 );
 
