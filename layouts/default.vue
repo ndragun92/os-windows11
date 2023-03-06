@@ -35,11 +35,11 @@ const backgroundStyles = computed(() => {
 const bgImage = computed(() => {
   switch (usePersonalization.theme) {
     case "theme1":
-      return "/theme1/1";
+      return "theme1/1";
     case "theme2":
-      return "/theme2/1";
+      return "theme2/1";
     case "theme5":
-      return "/theme5/1";
+      return "theme5/1";
     default:
       return "0";
   }
