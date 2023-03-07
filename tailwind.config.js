@@ -32,5 +32,17 @@ module.exports = {
     },
   },
   plugins: [require("@tailwindcss/line-clamp")],
-  safelist: ["left-full", "right-full"],
+  safelist: [
+    "left-full",
+    "right-full",
+    "bottom-full",
+    "top-full",
+    "z-[51]",
+    "z-50",
+    "right-[4px]",
+    "left-[4px]",
+    "top-[4px]",
+    "w-[calc(100%-8px)]",
+    "w-[50vw]",
+  ],
 };

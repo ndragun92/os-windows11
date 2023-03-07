@@ -2,28 +2,12 @@
   <div class="absolute top-0 z-10" :class="[`${align}-full`]">
     <ul
       ref="elContextMenuDesktopView"
-      class="whitespace-nowrap w-[121px] border border-black border-opacity-20 p-[5px] bg-[var(--global-context-menu-sub-bg-color)] backdrop-blur-[20px] rounded-lg text-sm gap-[5px] flex flex-col font-light"
+      class="context__menu-list context__menu-list--submenu w-[121px]"
     >
-      <li
-        class="flex items-center gap-[5px] hover:bg-[var(--global-context-menu-sub-item-bg-color--hover)] cursor-pointer duration-200 rounded px-[10px] py-[6px]"
-      >
-        Name
-      </li>
-      <li
-        class="flex items-center gap-[5px] hover:bg-[var(--global-context-menu-sub-item-bg-color--hover)] cursor-pointer duration-200 rounded px-[10px] py-[6px]"
-      >
-        Size
-      </li>
-      <li
-        class="flex items-center gap-[5px] hover:bg-[var(--global-context-menu-sub-item-bg-color--hover)] cursor-pointer duration-200 rounded px-[10px] py-[6px]"
-      >
-        Item type
-      </li>
-      <li
-        class="flex items-center gap-[5px] hover:bg-[var(--global-context-menu-sub-item-bg-color--hover)] cursor-pointer duration-200 rounded px-[10px] py-[6px]"
-      >
-        Date modified
-      </li>
+      <el-context-menu-item>Name</el-context-menu-item>
+      <el-context-menu-item>Size</el-context-menu-item>
+      <el-context-menu-item>Item type</el-context-menu-item>
+      <el-context-menu-item>Date modified</el-context-menu-item>
     </ul>
   </div>
 </template>

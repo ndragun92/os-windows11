@@ -10,6 +10,7 @@
       {
         'rounded-lg': !maximized,
         'el__manipulate-window--maximized': maximized,
+        '!z-[51]': isDragging,
       },
     ]"
     :style="style"
@@ -65,7 +66,11 @@
           maximized ? 'h-auto' : 'h-11',
         ]"
       >
-        <div ref="handle" class="el__manipulate-window--handle" />
+        <div
+          ref="handle"
+          class="el__manipulate-window--handle"
+          :class="{ 'pointer-events-none': maximized }"
+        />
         <ul
           class="relative h-full flex items-end gap-0.5 px-2 pointer-events-none"
         >
@@ -140,6 +145,20 @@
         </div>
       </div>
     </div>
+    <teleport to="body">
+      <transition-scale no-opacity>
+        <lazy-el-snap-overlay v-if="isSnapLeft && isDragging" position="left" />
+      </transition-scale>
+      <transition-scale no-opacity>
+        <lazy-el-snap-overlay
+          v-if="isSnapRight && isDragging"
+          position="right"
+        />
+      </transition-scale>
+      <transition-scale no-opacity>
+        <lazy-el-snap-overlay v-if="isSnapTop && isDragging" position="top" />
+      </transition-scale>
+    </teleport>
   </div>
 </template>
 
@@ -159,6 +178,8 @@ const {
   draggableInitialValues,
   wrapperStyle,
   resetWindowPosition,
+  width,
+  height,
   windowOffscreenValidation,
   onMaxMin,
   initResizeObserver,
@@ -179,11 +200,35 @@ let { x, y, style, isDragging } = useDraggable(el, {
   },
 });
 
+const { x: mouseX, y: mouseY } = useMouse();
+
+const toggleMaxMin = () => onMaxMin(x, y);
+
+const {
+  validate: validateSnapResize,
+  isSnapTop,
+  isSnapRight,
+  isSnapLeft,
+} = useSnapResize({
+  mouseY,
+  mouseX,
+  width,
+  height,
+  x,
+  y,
+  draggableInitialValues,
+  wrapperStyle,
+  toggleMaxMin,
+});
+
 watch(
   () => isDragging.value,
-  () => {
+  (val: boolean) => {
     draggableInitialValues.value.data.x = x.value;
     draggableInitialValues.value.data.y = y.value;
+    if (!val) {
+      validateSnapResize();
+    }
   }
 );
 
@@ -195,8 +240,7 @@ watch(
   }
 );
 
-const toggleMaxMin = () => onMaxMin(x, y);
-
+// region Window Resize
 initResizeObserver();
 
 watch(
@@ -216,6 +260,7 @@ watch(
     }
   }
 );
+// endregion
 </script>
 
 <style>

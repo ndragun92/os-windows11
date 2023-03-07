@@ -6,4 +6,13 @@
     .top-shadow {
         box-shadow: rgba(255, 255, 255, 0.3) 0 5px 2px -5px inset;
     }
+    .context__menu-list {
+        @apply whitespace-nowrap p-[5px] border backdrop-blur-[20px] rounded-lg text-sm gap-[5px] flex flex-col font-light;
+    }
+    .context__menu-list--menu {
+        @apply border-white border-opacity-5 bg-[var(--global-context-menu-bg-color)];
+    }
+    .context__menu-list--submenu {
+        @apply border-black border-opacity-20 bg-[var(--global-context-menu-sub-bg-color)];
+    }
 }
