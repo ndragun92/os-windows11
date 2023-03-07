@@ -2,6 +2,8 @@
   <li
     class="relative flex items-center justify-between hover:bg-[var(--global-context-menu-item-bg-color--hover)] cursor-pointer duration-200 rounded px-[10px] py-[6px]"
   >
+    <slot name="custom" />
+    <slot name="prepend" />
     <div class="flex items-center gap-[12px]">
       <slot name="icon" />
       <span><slot /></span>

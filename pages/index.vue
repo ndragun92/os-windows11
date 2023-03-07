@@ -85,9 +85,7 @@
       :key="ContextMenuEnum.desktop"
       :type="ContextMenuEnum.desktop"
     >
-      <ul
-        class="whitespace-nowrap w-[267px] border border-white border-opacity-5 p-[5px] bg-[var(--global-context-menu-bg-color)] backdrop-blur-[20px] rounded-lg text-sm gap-[5px] flex flex-col font-light"
-      >
+      <ul class="context__menu-list context__menu-list--menu w-[267px]">
         <lazy-el-context-menu-item
           @mouseenter="contextMenuDesktopShowSub.data.view = true"
           @mouseleave="contextMenuDesktopShowSub.data.view = false"
@@ -136,9 +134,7 @@
             </transition-expand>
           </template>
         </lazy-el-context-menu-item>
-        <lazy-el-context-menu-item
-          class="flex items-center justify-between hover:bg-[var(--global-context-menu-item-bg-color--hover)] cursor-pointer duration-200 rounded px-[10px] py-[6px]"
-        >
+        <lazy-el-context-menu-item>
           <template #icon>
             <Icon size="20" name="material-symbols:refresh-rounded" />
           </template>
@@ -163,7 +159,7 @@
           New
           <template #submenu>
             <transition-expand>
-              <context-menu-desktop-sort-by
+              <context-menu-desktop-new
                 v-if="contextMenuDesktopShowSub.data.new"
               />
             </transition-expand>
@@ -253,6 +249,7 @@ import { useDockStore } from "~/store/dockStore";
 import { AppEnum } from "~/enums/app.enum";
 import { ContextMenuEnum, useContextMenuStore } from "~/store/contextMenuStore";
 import ContextMenuDesktopSortBy from "~/components/el/context-menu/desktop/ContextMenuDesktopSortBy.vue";
+import ContextMenuDesktopNew from "~/components/el/context-menu/desktop/ContextMenuDesktopNew.vue";
 const ContextMenuDesktopView = defineAsyncComponent(
   () =>
     import("~/components/el/context-menu/desktop/ContextMenuDesktopView.vue")
