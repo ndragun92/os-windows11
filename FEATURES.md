@@ -15,6 +15,7 @@
 - Microsoft Edge (Base)
 - OffScreen protection (resets window position if it is offscreen)
 - Blue screen of death and PC restart (You can fake it by going to /bsod)
+- Snap window drag resize top/left/right direction
 ```
 
 ## Upcoming
