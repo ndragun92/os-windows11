@@ -30,12 +30,4 @@ const contextMenu = useContextMenuStore();
 const elContextMenu = ref<HTMLElement | null>(null);
 
 onClickOutside(elContextMenu, () => contextMenu.setVisibility(false));
-
-watch(
-  () => contextMenu.position.data,
-  async () => {
-    await nextTick(() => contextMenu.validatePosition(elContextMenu.value));
-  },
-  { deep: true }
-);
 </script>

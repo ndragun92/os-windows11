@@ -1,7 +1,9 @@
 <template>
   <footer
     class="h-[48px] pl-[8px] pr-[12px] bg-[var(--el-footer-bg-color)] backdrop-blur-[100px] relative z-40 border-t-[1px] border-white border-opacity-[0.15]"
-    @contextmenu.self.prevent="contextMenu.open($event, ContextMenuEnum.footer)"
+    @contextmenu.self.prevent="
+      contextMenu.open($event, ContextMenuEnum.footer, undefined, height - 48)
+    "
   >
     <div class="flex justify-between items-center h-full pointer-events-none">
       <div>
@@ -203,10 +205,20 @@
     </transition-expand>
   </teleport>
   <lazy-el-context-menu :type="ContextMenuEnum.footer">
-    <ul class="whitespace-nowrap">
-      <li>Test 1</li>
-      <li>Test 2</li>
-      <li>Test 3</li>
+    <ul class="context__menu-list context__menu-list--submenu w-[158px]">
+      <el-context-menu-item>
+        <template #icon>
+          <Icon size="20" name="material-symbols:monitor-heart-outline-sharp" />
+        </template>
+        Task manager
+      </el-context-menu-item>
+      <el-context-menu-divider />
+      <el-context-menu-item>
+        <template #icon>
+          <Icon size="20" name="heroicons:cog-8-tooth" />
+        </template>
+        Taskbar settings
+      </el-context-menu-item>
     </ul>
   </lazy-el-context-menu>
 </template>
@@ -233,6 +245,7 @@ const showMenu = ref(false);
 const elStartMenu = ref<HTMLElement | null>(null);
 
 onClickOutside(elStartMenu, () => (showMenu.value = false));
+const { height } = useWindowSize();
 
 onMounted(() => {
   currentTime.value = useDateFormat(useNow(), "HH:mm");
