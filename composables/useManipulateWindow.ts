@@ -43,6 +43,7 @@ export default function useManipulateWindow(
   const onMaxMin = async (x: Ref<number>, y: Ref<number>) => {
     if (maximized.value) {
       await onMinimize(x, y);
+      await nextTick(async () => await windowOffscreenValidation());
     } else {
       await onMaximize(x, y);
     }
@@ -104,7 +105,7 @@ export default function useManipulateWindow(
   };
 
   onMounted(async () => {
-    await nextTick(async () => await windowOffscreenValidation());
+    await nextTick(() => setTimeout(() => windowOffscreenValidation(), 500));
   });
 
   watch(
