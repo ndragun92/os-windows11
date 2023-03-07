@@ -158,6 +158,8 @@ export default function useManipulateWindow(
     draggableInitialValues,
     wrapperStyle,
     resetWindowPosition,
+    width,
+    height,
     windowOffscreenValidation,
     onMaxMin,
     initResizeObserver,

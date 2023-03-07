@@ -10,6 +10,7 @@
       {
         'rounded-lg': !maximized,
         'el__manipulate-window--maximized': maximized,
+        '!z-[51]': isDragging,
       },
     ]"
     :style="style"
@@ -65,7 +66,11 @@
           maximized ? 'h-auto' : 'h-11',
         ]"
       >
-        <div ref="handle" class="el__manipulate-window--handle" />
+        <div
+          ref="handle"
+          class="el__manipulate-window--handle"
+          :class="{ 'pointer-events-none': maximized }"
+        />
         <ul
           class="relative h-full flex items-end gap-0.5 px-2 pointer-events-none"
         >
@@ -115,6 +120,15 @@
       <div
         class="flex-1 max-h-full overflow-hidden bg-[var(--window-container-color)] p-2"
       >
+        <pre>
+<!--            {{ width - mouseX + 100 }}-->
+<!--            {{ width }}-->
+            {{ x }}
+<!--            {{ wrapperStyle.data.width }}-->
+          {{ parseInt(wrapperStyle.data.width) - x }}
+          {{ (width -parseInt(wrapperStyle.data.width)) }}
+          {{ (width -parseInt(wrapperStyle.data.width)) - (parseInt(wrapperStyle.data.width) - x) }}
+          </pre>
         <div class="w-full h-full flex items-center justify-center">
           <Icon class="mr-2" size="24" name="fluent-emoji-flat:warning" />
           File Explorer is under construction...
@@ -140,6 +154,26 @@
         </div>
       </div>
     </div>
+    <teleport to="body">
+      <transition-scale no-opacity>
+        <div
+          v-if="mouseX < 100 && mouseY > 100 && isDragging"
+          class="fixed left-[4px] top-[4px] bottom-[52px] w-[50vw] bg-[#717171] bg-opacity-50 rounded-lg backdrop-blur-[5px] border border-black border-opacity-10 shadow-[0_0_50px_10px_rgba(0,0,0,0.33)] z-50"
+        />
+      </transition-scale>
+      <transition-scale no-opacity>
+        <div
+          v-if="width - mouseX + 100 < 200 && mouseY > 100 && isDragging"
+          class="fixed right-[4px] top-[4px] bottom-[52px] w-[50vw] bg-[#717171] bg-opacity-50 rounded-lg backdrop-blur-[5px] border border-black border-opacity-10 shadow-[0_0_50px_10px_rgba(0,0,0,0.33)] z-50"
+        />
+      </transition-scale>
+      <transition-scale no-opacity>
+        <div
+          v-if="mouseY < 100 && isDragging"
+          class="fixed right-[4px] left-[4px] top-[4px] bottom-[52px] w-[calc(100%-8px)] bg-[#717171] bg-opacity-50 rounded-lg backdrop-blur-[5px] border border-black border-opacity-10 shadow-[0_0_50px_10px_rgba(0,0,0,0.33)] z-50"
+        />
+      </transition-scale>
+    </teleport>
   </div>
 </template>
 
@@ -159,6 +193,8 @@ const {
   draggableInitialValues,
   wrapperStyle,
   resetWindowPosition,
+  width,
+  height,
   windowOffscreenValidation,
   onMaxMin,
   initResizeObserver,
@@ -181,11 +217,41 @@ let { x, y, style, isDragging } = useDraggable(el, {
 
 watch(
   () => isDragging.value,
-  () => {
+  (val: boolean) => {
     draggableInitialValues.value.data.x = x.value;
     draggableInitialValues.value.data.y = y.value;
+    if (!val) {
+      if (mouseY.value < 100) {
+        // Snap top to max
+        toggleMaxMin();
+      } else if (width.value - mouseX.value + 100 < 200 && mouseY.value > 100) {
+        // Snap right half
+        nextTick(() => {
+          x.value = width.value / 2;
+          y.value = 0;
+          draggableInitialValues.value.data.x = x.value;
+          draggableInitialValues.value.data.y = y.value;
+          wrapperStyle.value.data.width = `${width.value / 2}px`;
+          wrapperStyle.value.data.height = `${height.value - 46}px`;
+        });
+      } else if (mouseX.value < 100 && mouseY.value > 100) {
+        // Snap left half
+        console.log("style", style.value);
+        // console.log("dragEnd", width.value, height.value);
+        nextTick(() => {
+          x.value = 0;
+          y.value = 0;
+          draggableInitialValues.value.data.x = x.value;
+          draggableInitialValues.value.data.y = y.value;
+          wrapperStyle.value.data.width = `${width.value / 2}px`;
+          wrapperStyle.value.data.height = `${height.value - 46}px`;
+        });
+      }
+    }
   }
 );
+
+const { x: mouseX, y: mouseY } = useMouse();
 
 watch(
   () => resetWindowPosition.value,
