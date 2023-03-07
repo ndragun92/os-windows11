@@ -83,7 +83,7 @@
               />
               <el-image
                 class="pointer-events-none block absolute -right-[3px] -bottom-[1px]"
-                src="/images/icons/search-dolphin.png"
+                src="/images/search-icons/1.png"
                 alt="Search dolphin"
                 :lazy="false"
               />
