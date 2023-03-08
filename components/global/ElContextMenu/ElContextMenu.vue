@@ -1,6 +1,21 @@
 <template>
   <teleport to="body">
-    <lazy-transition-scale no-opacity>
+    <lazy-transition-expand v-if="props.animationExpand" no-opacity>
+      <div
+        v-if="contextMenu.visible && contextMenu.type === props.type"
+        class="fixed z-[9999]"
+        :style="{
+          [contextMenu.startPositionX]: contextMenu.returnStartPositionX,
+          [contextMenu.startPositionY]: contextMenu.returnStartPositionY,
+        }"
+        @contextmenu.capture.prevent
+      >
+        <div ref="elContextMenu" class="inline-block">
+          <slot></slot>
+        </div>
+      </div>
+    </lazy-transition-expand>
+    <lazy-transition-scale v-else no-opacity>
       <div
         v-if="contextMenu.visible && contextMenu.type === props.type"
         class="fixed z-[9999]"
@@ -23,6 +38,7 @@ import { ContextMenuEnum, useContextMenuStore } from "~/store/contextMenuStore";
 
 const props = defineProps<{
   type: ContextMenuEnum;
+  animationExpand?: boolean;
 }>();
 
 const contextMenu = useContextMenuStore();

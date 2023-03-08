@@ -2,7 +2,7 @@
   <footer
     class="h-[48px] pl-[8px] pr-[12px] bg-[var(--el-footer-bg-color)] backdrop-blur-[100px] relative z-40 border-t-[1px] border-white border-opacity-[0.15]"
     @contextmenu.self.prevent="
-      contextMenu.open($event, ContextMenuEnum.footer, undefined, height - 48)
+      contextMenu.open($event, ContextMenuEnum.footer, undefined, height - 49)
     "
   >
     <div class="flex justify-between items-center h-full pointer-events-none">
@@ -204,7 +204,7 @@
       </div>
     </transition-expand>
   </teleport>
-  <lazy-el-context-menu :type="ContextMenuEnum.footer">
+  <lazy-el-context-menu :type="ContextMenuEnum.footer" :animation-expand="true">
     <ul class="context__menu-list context__menu-list--submenu w-[158px]">
       <el-context-menu-item>
         <template #icon>
