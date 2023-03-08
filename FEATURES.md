@@ -16,6 +16,7 @@
 - OffScreen protection (resets window position if it is offscreen)
 - Blue screen of death and PC restart (You can fake it by going to /bsod)
 - Snap window drag resize top/left/right direction
+- Windows minimize
 ```
 
 ## Upcoming
@@ -27,7 +28,6 @@
 - Widgets Sidebar
 - Time details tooltip (Hardcoded > Dynamic)
 - All themes support + custom theme
-- Windows minimize
 - File Explorer (Rest of UI)
 - Custom context menu for desktop icons
 - Custom context menu for bottom navigation bar
