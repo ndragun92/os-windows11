@@ -30,5 +30,9 @@ export default function useDesktop() {
     return items?.value?.data?.find((obj) => obj.position === slotIndex);
   };
 
-  return { items, getItemByIndex };
+  const getItemIndexByIndex = (slotIndex) => {
+    return items?.value?.data?.findIndex((obj) => obj.position === slotIndex);
+  };
+
+  return { items, getItemByIndex, getItemIndexByIndex };
 }

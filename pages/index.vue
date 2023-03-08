@@ -26,7 +26,7 @@
           :key="`item--${slotIndex}`"
           :class="['relative w-full h-full py-1 flex-col']"
           draggable="true"
-          @dragstart="onDragStart($event, getItemByIndex(slotIndex))"
+          @dragstart="onDragStart($event, getItemIndexByIndex(slotIndex))"
           @dragend="onDragEnd"
           @dblclick="
             getItemByIndex(slotIndex)?.app
@@ -233,7 +233,7 @@ const ContextMenuDesktopView = defineAsyncComponent(
 const dockStore = useDockStore();
 const contextMenu = useContextMenuStore();
 
-const { items, getItemByIndex } = useDesktop();
+const { items, getItemByIndex, getItemIndexByIndex } = useDesktop();
 
 const dragging = ref(false);
 const onDragStart = (e, n) => {
