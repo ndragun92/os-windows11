@@ -18,12 +18,12 @@
     "@interactjs/types": "^1.10.17",
     "@nuxt/image-edge": "^1.0.0-27821548.ab054e4",
     "@nuxtjs/tailwindcss": "^6.4.1",
-    "@typescript-eslint/eslint-plugin": "^5.54.0",
-    "@typescript-eslint/parser": "^5.54.0",
+    "@typescript-eslint/eslint-plugin": "^5.54.1",
+    "@typescript-eslint/parser": "^5.54.1",
     "@vueuse/core": "^9.13.0",
     "@vueuse/nuxt": "^9.13.0",
     "eslint": "^8.35.0",
-    "eslint-config-prettier": "^8.6.0",
+    "eslint-config-prettier": "^8.7.0",
     "eslint-plugin-nuxt": "^4.0.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vue": "^9.9.0",
@@ -42,6 +42,6 @@
     "dayjs": "^1.11.7",
     "interactjs": "^1.10.17",
     "lodash-es": "^4.17.21",
-    "pinia": "^2.0.27"
+    "pinia": "^2.0.29"
   }
 }
