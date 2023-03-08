@@ -26,5 +26,9 @@ export default function useDesktop() {
     ],
   });
 
-  return { items };
+  const getItemByIndex = (slotIndex) => {
+    return items?.value?.data?.find((obj) => obj.position === slotIndex);
+  };
+
+  return { items, getItemByIndex };
 }

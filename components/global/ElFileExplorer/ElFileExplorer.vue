@@ -14,7 +14,7 @@
       },
     ]"
     :style="style"
-    @click="dockStore.setFocusedWindow(AppEnum.fileExplorer)"
+    @click="dockStore.setFocusedWindow(AppEnum.fileExplorer, true)"
   >
     <div
       class="overflow-hidden flex flex-col"
@@ -31,6 +31,7 @@
             class="w-12 text-neutral-500 h-full flex items-center justify-center transition duration-200"
             :class="['hover:text-white hover:bg-white hover:bg-opacity-5']"
             type="button"
+            @click.stop="dockStore.minimize(AppEnum.fileExplorer)"
           >
             <Icon name="codicon:chrome-minimize" />
           </button>
@@ -51,7 +52,7 @@
             class="w-12 text-neutral-500 h-full flex items-center justify-center transition duration-200"
             :class="['hover:text-white hover:bg-red-600']"
             type="button"
-            @click.stop="dockStore.onCloseApp(AppEnum.fileExplorer)"
+            @click.stop="dockStore.close(AppEnum.fileExplorer)"
           >
             <Icon size="20" name="mdi:close" />
           </button>
@@ -183,7 +184,9 @@ const {
   resizeWindowOptions,
 } = useManipulateWindow(AppEnum.fileExplorer, { x: 100, y: 100 });
 
-onClickOutside(el, () => dockStore.setFocusedWindow(""));
+onClickOutside(el, () =>
+  nextTick(() => setTimeout(() => dockStore.setFocusedWindow(""), 50))
+);
 let { x, y, style, isDragging } = useDraggable(el, {
   initialValue: {
     x: draggableInitialValues.value.data.x,

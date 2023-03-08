@@ -21,60 +21,37 @@
         @dragover="onDragover"
       >
         <el-button
-          v-if="items?.data?.find((obj) => obj.position === slotIndex)"
+          v-if="getItemByIndex(slotIndex)"
           :id="`item--${slotIndex}`"
           :key="`item--${slotIndex}`"
           :class="['relative w-full h-full py-1 flex-col']"
           draggable="true"
-          @dragstart="
-            onDragStart(
-              $event,
-              items?.data?.findIndex((obj) => obj.position === slotIndex)
-            )
-          "
+          @dragstart="onDragStart($event, getItemByIndex(slotIndex))"
           @dragend="onDragEnd"
           @dblclick="
-            items?.data?.find((obj) => obj.position === slotIndex).app
-              ? dockStore.isActiveApp(
-                  items?.data?.find((obj) => obj.position === slotIndex).app
-                )
-                ? dockStore.setFocusedWindow(
-                    items?.data?.find((obj) => obj.position === slotIndex).app
-                  )
-                : dockStore.onActivateApp(
-                    items?.data?.find((obj) => obj.position === slotIndex).app
-                  )
+            getItemByIndex(slotIndex)?.app
+              ? dockStore.open(getItemByIndex(slotIndex)?.app)
               : log().onAlert('Coming soon')
           "
         >
           <template #icon>
             <component
-              :is="
-                items?.data?.find((obj) => obj.position === slotIndex)?.iconName
-              "
-              v-if="
-                items?.data?.find((obj) => obj.position === slotIndex)?.icon
-              "
+              :is="getItemByIndex(slotIndex)?.iconName"
+              v-if="getItemByIndex(slotIndex)?.icon"
               class="w-[50px] h-[50px] -mt-[25px] p-[5px]"
             />
             <el-image
               v-else
               class="block w-[50px] h-[50px] -mt-[25px] p-[5px]"
-              :src="
-                items?.data?.find((obj) => obj.position === slotIndex)?.iconName
-              "
-              :alt="
-                items?.data?.find((obj) => obj.position === slotIndex)?.iconName
-              "
+              :src="getItemByIndex(slotIndex)?.iconName"
+              :alt="getItemByIndex(slotIndex)?.iconName"
             />
           </template>
           <template #name>
             <div class="absolute top-[calc(100%-27px)]">
               <span
                 class="text-xxs line-clamp-2 w-full px-0.5 text-[var(--desktop-item-text-color)] leading-3"
-                v-text="
-                  items?.data?.find((obj) => obj.position === slotIndex)?.name
-                "
+                v-text="getItemByIndex(slotIndex)?.name"
               />
             </div>
           </template>
@@ -210,13 +187,11 @@
       </ul>
     </lazy-el-context-menu>
     <lazy-transition-scale>
-      <lazy-el-file-explorer
-        v-if="dockStore.isActiveApp(AppEnum.fileExplorer)"
-      />
+      <lazy-el-file-explorer v-if="dockStore.isVisible(AppEnum.fileExplorer)" />
     </lazy-transition-scale>
     <lazy-transition-scale>
       <lazy-el-microsoft-edge
-        v-if="dockStore.isActiveApp(AppEnum.microsoftEdge)"
+        v-if="dockStore.isVisible(AppEnum.microsoftEdge)"
       />
     </lazy-transition-scale>
     <teleport to="body">
@@ -258,7 +233,7 @@ const ContextMenuDesktopView = defineAsyncComponent(
 const dockStore = useDockStore();
 const contextMenu = useContextMenuStore();
 
-const { items } = useDesktop();
+const { items, getItemByIndex } = useDesktop();
 
 const dragging = ref(false);
 const onDragStart = (e, n) => {

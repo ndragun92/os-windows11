@@ -95,7 +95,7 @@
         <ul class="flex items-center gap-[4px]">
           <li class="menu__link">
             <el-button
-              tooltip="File Explorer"
+              tooltip="Coming soon"
               :class="['w-10 h-10 px-2']"
               :hover-scale="true"
               @click="log().onAlert('Coming soon')"
@@ -113,13 +113,9 @@
               tooltip="File Explorer"
               :class="['w-10 h-10 px-2']"
               :hover-scale="true"
-              :active="dockStore.isActiveApp(AppEnum.fileExplorer)"
+              :active="dockStore.isActive(AppEnum.fileExplorer)"
               :focused="dockStore.isFocused(AppEnum.fileExplorer)"
-              @click="
-                dockStore.isActiveApp(AppEnum.fileExplorer)
-                  ? dockStore.setFocusedWindow(AppEnum.fileExplorer)
-                  : dockStore.onActivateApp(AppEnum.fileExplorer)
-              "
+              @click.stop="dockStore.open(AppEnum.fileExplorer)"
             >
               <template #icon>
                 <icon-file-explorer class="w-6 h-6" />
@@ -135,13 +131,9 @@
                 tooltip="Microsoft Edge"
                 :class="['w-10 h-10 px-2']"
                 :hover-scale="true"
-                :active="dockStore.isActiveApp(AppEnum.microsoftEdge)"
+                :active="dockStore.isActive(AppEnum.microsoftEdge)"
                 :focused="dockStore.isFocused(AppEnum.microsoftEdge)"
-                @click="
-                  dockStore.isActiveApp(AppEnum.microsoftEdge)
-                    ? dockStore.setFocusedWindow(AppEnum.microsoftEdge)
-                    : dockStore.onActivateApp(AppEnum.microsoftEdge)
-                "
+                @click.stop="dockStore.open(AppEnum.microsoftEdge)"
               >
                 <template #icon>
                   <icon-microsoft-edge class="w-7 h-7" />
