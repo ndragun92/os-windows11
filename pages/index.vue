@@ -294,7 +294,7 @@ const mouseCoordinates = reactive<{
     height: 0,
   },
 });
-const onMouseDown = (e) => {
+const onMouseDown = (e: MouseEvent) => {
   onMouseDownActive.value = true;
   mouseCoordinates.data.dynamic.x = 0;
   mouseCoordinates.data.dynamic.y = 0;
@@ -306,13 +306,13 @@ const onMouseDown = (e) => {
   document.addEventListener("mouseup", onMouseUp);
 };
 
-const onMouseUp = (e) => {
+const onMouseUp = (e: MouseEvent) => {
   onMouseDownActive.value = false;
   document.removeEventListener("mousemove", onMouseMoveEvent);
   document.addEventListener("mouseup", onMouseUp);
 };
 
-const onMouseMoveEvent = (e) => {
+const onMouseMoveEvent = (e: MouseEvent) => {
   const { x, y } = e;
   const calculateWidth = x - mouseCoordinates.data.start.x;
   const calculateHeight = y - mouseCoordinates.data.start.y;
