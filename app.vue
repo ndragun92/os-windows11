@@ -45,7 +45,7 @@
   </NuxtLayout>
   <transition-expand appear>
     <div
-      v-if="showAboutModal"
+      v-if="$route.name === 'index' && showAboutModal"
       class="fixed top-0 right-0 bottom-0 left-0 p-20 bg-black bg-opacity-50 backdrop-blur-[5px] z-[9999999] flex justify-center items-center"
     >
       <div

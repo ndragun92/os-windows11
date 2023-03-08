@@ -25,15 +25,31 @@ export const useContextMenuStore = defineStore("contextMenu", () => {
     setVisibility(true);
   };
 
-  const open = (e: MouseEvent, value: ContextMenuEnum) => {
+  const open = (
+    e: MouseEvent,
+    value: ContextMenuEnum,
+    x = undefined,
+    y = undefined
+  ) => {
     type.value = value;
+    switch (type.value) {
+      case ContextMenuEnum.footer:
+        setStartPositionY("bottom");
+        break;
+      default:
+        setStartPositionY("top");
+    }
     if (!e) return;
     e.preventDefault();
-    setPosition({ x: e.x, y: e.y });
+    setPosition({ x: x || e.x, y: y || e.y });
   };
 
   const startPositionX = ref<"left" | "right">("left");
   const startPositionY = ref<"top" | "bottom">("top");
+
+  const setStartPositionY = (value: "top" | "bottom") => {
+    startPositionY.value = value;
+  };
   const validatePosition = async (el: HTMLElement | null) => {
     startPositionX.value = "left";
     startPositionY.value = "top";
@@ -81,6 +97,7 @@ export const useContextMenuStore = defineStore("contextMenu", () => {
     startPositionX,
     returnStartPositionX,
     startPositionY,
+    setStartPositionY,
     returnStartPositionY,
     validatePosition,
   };

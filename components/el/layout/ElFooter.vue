@@ -1,7 +1,9 @@
 <template>
   <footer
     class="h-[48px] pl-[8px] pr-[12px] bg-[var(--el-footer-bg-color)] backdrop-blur-[100px] relative z-40 border-t-[1px] border-white border-opacity-[0.15]"
-    @contextmenu.self.prevent="contextMenu.open($event, ContextMenuEnum.footer)"
+    @contextmenu.self.prevent="
+      contextMenu.open($event, ContextMenuEnum.footer, undefined, height - 49)
+    "
   >
     <div class="flex justify-between items-center h-full pointer-events-none">
       <div>
@@ -83,7 +85,7 @@
               />
               <el-image
                 class="pointer-events-none block absolute -right-[3px] -bottom-[1px]"
-                src="/images/icons/search-dolphin.png"
+                src="/images/search-icons/1.png"
                 alt="Search dolphin"
                 :lazy="false"
               />
@@ -93,7 +95,7 @@
         <ul class="flex items-center gap-[4px]">
           <li class="menu__link">
             <el-button
-              tooltip="File Explorer"
+              tooltip="Coming soon"
               :class="['w-10 h-10 px-2']"
               :hover-scale="true"
               @click="log().onAlert('Coming soon')"
@@ -111,13 +113,9 @@
               tooltip="File Explorer"
               :class="['w-10 h-10 px-2']"
               :hover-scale="true"
-              :active="dockStore.isActiveApp(AppEnum.fileExplorer)"
+              :active="dockStore.isActive(AppEnum.fileExplorer)"
               :focused="dockStore.isFocused(AppEnum.fileExplorer)"
-              @click="
-                dockStore.isActiveApp(AppEnum.fileExplorer)
-                  ? dockStore.setFocusedWindow(AppEnum.fileExplorer)
-                  : dockStore.onActivateApp(AppEnum.fileExplorer)
-              "
+              @click.stop="dockStore.open(AppEnum.fileExplorer)"
             >
               <template #icon>
                 <icon-file-explorer class="w-6 h-6" />
@@ -133,13 +131,9 @@
                 tooltip="Microsoft Edge"
                 :class="['w-10 h-10 px-2']"
                 :hover-scale="true"
-                :active="dockStore.isActiveApp(AppEnum.microsoftEdge)"
+                :active="dockStore.isActive(AppEnum.microsoftEdge)"
                 :focused="dockStore.isFocused(AppEnum.microsoftEdge)"
-                @click="
-                  dockStore.isActiveApp(AppEnum.microsoftEdge)
-                    ? dockStore.setFocusedWindow(AppEnum.microsoftEdge)
-                    : dockStore.onActivateApp(AppEnum.microsoftEdge)
-                "
+                @click.stop="dockStore.open(AppEnum.microsoftEdge)"
               >
                 <template #icon>
                   <icon-microsoft-edge class="w-7 h-7" />
@@ -202,11 +196,21 @@
       </div>
     </transition-expand>
   </teleport>
-  <lazy-el-context-menu :type="ContextMenuEnum.footer">
-    <ul class="whitespace-nowrap">
-      <li>Test 1</li>
-      <li>Test 2</li>
-      <li>Test 3</li>
+  <lazy-el-context-menu :type="ContextMenuEnum.footer" :animation-expand="true">
+    <ul class="context__menu-list context__menu-list--submenu w-[158px]">
+      <el-context-menu-item>
+        <template #icon>
+          <Icon size="20" name="material-symbols:monitor-heart-outline-sharp" />
+        </template>
+        Task manager
+      </el-context-menu-item>
+      <el-context-menu-divider />
+      <el-context-menu-item>
+        <template #icon>
+          <Icon size="20" name="heroicons:cog-8-tooth" />
+        </template>
+        Taskbar settings
+      </el-context-menu-item>
     </ul>
   </lazy-el-context-menu>
 </template>
@@ -233,6 +237,7 @@ const showMenu = ref(false);
 const elStartMenu = ref<HTMLElement | null>(null);
 
 onClickOutside(elStartMenu, () => (showMenu.value = false));
+const { height } = useWindowSize();
 
 onMounted(() => {
   currentTime.value = useDateFormat(useNow(), "HH:mm");

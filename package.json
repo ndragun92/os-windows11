@@ -1,7 +1,7 @@
 {
   "name": "windows11nuxt",
   "description": "Windows 11 made in Nuxt.js and Tailwind CSS",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "private": true,
   "scripts": {
     "build": "nuxt build",

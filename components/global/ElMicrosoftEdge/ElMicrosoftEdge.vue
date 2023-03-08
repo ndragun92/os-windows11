@@ -28,6 +28,7 @@
             class="w-12 text-neutral-500 h-full flex items-center justify-center transition duration-200"
             :class="['hover:text-white hover:bg-white hover:bg-opacity-5']"
             type="button"
+            @click.stop="dockStore.minimize(AppEnum.microsoftEdge)"
           >
             <Icon name="codicon:chrome-minimize" />
           </button>
@@ -48,7 +49,7 @@
             class="w-12 text-neutral-500 h-full flex items-center justify-center transition duration-200"
             :class="['hover:text-white hover:bg-red-600']"
             type="button"
-            @click.stop="dockStore.onCloseApp(AppEnum.microsoftEdge)"
+            @click.stop="dockStore.close(AppEnum.microsoftEdge)"
           >
             <Icon size="20" name="mdi:close" />
           </button>
@@ -230,7 +231,9 @@ const {
   resizeWindowOptions,
 } = useManipulateWindow(AppEnum.microsoftEdge, { x: 150, y: 150 });
 
-onClickOutside(el, () => dockStore.setFocusedWindow(""));
+onClickOutside(el, () =>
+  nextTick(() => setTimeout(() => dockStore.setFocusedWindow(""), 50))
+);
 
 let { x, y, style, isDragging } = useDraggable(el, {
   initialValue: {
