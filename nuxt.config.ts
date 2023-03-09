@@ -94,8 +94,8 @@ export default defineNuxtConfig({
     "@morev/vue-transitions/nuxt",
     // https://v1.image.nuxtjs.org/get-started/
     "@nuxt/image-edge",
-    // https://nuxt.com/modules/robots
-    "@nuxtjs/robots",
+    // https://nuxt.com/modules/simple-robots
+    "nuxt-simple-robots",
     // https://nuxt.com/modules/simple-sitemap
     "nuxt-simple-sitemap",
     // https://nuxt.com/modules/fontaine
