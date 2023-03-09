@@ -94,5 +94,7 @@ export default defineNuxtConfig({
     "@morev/vue-transitions/nuxt",
     // https://v1.image.nuxtjs.org/get-started/
     "@nuxt/image-edge",
+    // https://nuxt.com/modules/robots
+    "@nuxtjs/robots",
   ],
 });
