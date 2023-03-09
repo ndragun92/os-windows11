@@ -17,6 +17,7 @@
   "devDependencies": {
     "@interactjs/types": "^1.10.17",
     "@nuxt/image-edge": "^1.0.0-27821548.ab054e4",
+    "@nuxtjs/fontaine": "^0.2.4",
     "@nuxtjs/tailwindcss": "^6.4.1",
     "@typescript-eslint/eslint-plugin": "^5.54.1",
     "@typescript-eslint/parser": "^5.54.1",

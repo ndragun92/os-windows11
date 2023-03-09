@@ -98,6 +98,8 @@ export default defineNuxtConfig({
     "@nuxtjs/robots",
     // https://nuxt.com/modules/simple-sitemap
     "nuxt-simple-sitemap",
+    // https://nuxt.com/modules/fontaine
+    "@nuxtjs/fontaine",
   ],
   sitemap: {
     hostname: "https://os-windows11.vercel.app",
