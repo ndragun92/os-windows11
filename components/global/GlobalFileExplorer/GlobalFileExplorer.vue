@@ -148,13 +148,16 @@
     </div>
     <teleport to="body">
       <transition-scale no-opacity>
-        <el-snap-overlay v-if="isSnapLeft && isDragging" position="left" />
+        <global-snap-overlay v-if="isSnapLeft && isDragging" position="left" />
       </transition-scale>
       <transition-scale no-opacity>
-        <el-snap-overlay v-if="isSnapRight && isDragging" position="right" />
+        <global-snap-overlay
+          v-if="isSnapRight && isDragging"
+          position="right"
+        />
       </transition-scale>
       <transition-scale no-opacity>
-        <el-snap-overlay v-if="isSnapTop && isDragging" position="top" />
+        <global-snap-overlay v-if="isSnapTop && isDragging" position="top" />
       </transition-scale>
     </teleport>
   </div>

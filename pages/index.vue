@@ -20,7 +20,7 @@
         @drop="onDrop"
         @dragover="onDragover"
       >
-        <el-button
+        <global-button
           v-if="getItemByIndex(slotIndex)"
           :id="`item--${slotIndex}`"
           :key="`item--${slotIndex}`"
@@ -40,7 +40,7 @@
               v-if="getItemByIndex(slotIndex)?.icon"
               class="w-[50px] h-[50px] -mt-[25px] p-[5px]"
             />
-            <el-image
+            <global-image
               v-else
               class="block w-[50px] h-[50px] -mt-[25px] p-[5px]"
               :src="getItemByIndex(slotIndex)?.iconName"
@@ -55,15 +55,15 @@
               />
             </div>
           </template>
-        </el-button>
+        </global-button>
       </div>
     </div>
-    <lazy-el-context-menu
+    <lazy-global-context-menu
       :key="ContextMenuEnum.desktop"
       :type="ContextMenuEnum.desktop"
     >
       <ul class="context__menu-list context__menu-list--menu w-[267px]">
-        <lazy-el-context-menu-item
+        <lazy-global-context-menu-item
           @mouseenter="contextMenuDesktopShowSub.data.view = true"
           @mouseleave="contextMenuDesktopShowSub.data.view = false"
         >
@@ -73,13 +73,13 @@
           View
           <template #submenu>
             <transition-expand>
-              <context-menu-desktop-view
+              <el-context-menu-desktop-view
                 v-if="contextMenuDesktopShowSub.data.view"
               />
             </transition-expand>
           </template>
-        </lazy-el-context-menu-item>
-        <lazy-el-context-menu-item
+        </lazy-global-context-menu-item>
+        <lazy-global-context-menu-item
           @mouseenter="contextMenuDesktopShowSub.data.sortBy = true"
           @mouseleave="contextMenuDesktopShowSub.data.sortBy = false"
         >
@@ -105,20 +105,20 @@
           Sort by
           <template #submenu>
             <transition-expand>
-              <context-menu-desktop-sort-by
+              <el-context-menu-desktop-sort-by
                 v-if="contextMenuDesktopShowSub.data.sortBy"
               />
             </transition-expand>
           </template>
-        </lazy-el-context-menu-item>
-        <lazy-el-context-menu-item>
+        </lazy-global-context-menu-item>
+        <lazy-global-context-menu-item>
           <template #icon>
             <Icon size="20" name="material-symbols:refresh-rounded" />
           </template>
           Refresh
-        </lazy-el-context-menu-item>
-        <lazy-el-context-menu-divider />
-        <lazy-el-context-menu-item
+        </lazy-global-context-menu-item>
+        <lazy-global-context-menu-divider />
+        <lazy-global-context-menu-item
           @mouseenter="contextMenuDesktopShowSub.data.new = true"
           @mouseleave="contextMenuDesktopShowSub.data.new = false"
         >
@@ -136,14 +136,14 @@
           New
           <template #submenu>
             <transition-expand>
-              <context-menu-desktop-new
+              <el-context-menu-desktop-new
                 v-if="contextMenuDesktopShowSub.data.new"
               />
             </transition-expand>
           </template>
-        </lazy-el-context-menu-item>
-        <lazy-el-context-menu-divider />
-        <lazy-el-context-menu-item>
+        </lazy-global-context-menu-item>
+        <lazy-global-context-menu-divider />
+        <lazy-global-context-menu-item>
           <template #icon>
             <div class="relative flex items-center justify-center">
               <Icon
@@ -158,22 +158,22 @@
             </div>
           </template>
           Display settings
-        </lazy-el-context-menu-item>
-        <lazy-el-context-menu-item>
+        </lazy-global-context-menu-item>
+        <lazy-global-context-menu-item>
           <template #icon>
             <icon-personalize class="w-[20px] h-[20px]" />
           </template>
           Personalize
-        </lazy-el-context-menu-item>
-        <lazy-el-context-menu-divider />
-        <lazy-el-context-menu-item>
+        </lazy-global-context-menu-item>
+        <lazy-global-context-menu-divider />
+        <lazy-global-context-menu-item>
           <template #icon>
             <icon-terminal class="w-[20px] h-[20px]" />
           </template>
           Open in Terminal
-        </lazy-el-context-menu-item>
-        <lazy-el-context-menu-divider />
-        <lazy-el-context-menu-item>
+        </lazy-global-context-menu-item>
+        <lazy-global-context-menu-divider />
+        <lazy-global-context-menu-item>
           <template #icon>
             <Icon size="20" name="iconoir:scale-frame-enlarge" />
           </template>
@@ -183,14 +183,16 @@
               <small class="text-xxs">Shift+F10</small>
             </div>
           </template>
-        </lazy-el-context-menu-item>
+        </lazy-global-context-menu-item>
       </ul>
-    </lazy-el-context-menu>
+    </lazy-global-context-menu>
     <lazy-transition-scale>
-      <lazy-el-file-explorer v-if="dockStore.isVisible(AppEnum.fileExplorer)" />
+      <lazy-global-file-explorer
+        v-if="dockStore.isVisible(AppEnum.fileExplorer)"
+      />
     </lazy-transition-scale>
     <lazy-transition-scale>
-      <lazy-el-microsoft-edge
+      <lazy-global-microsoft-edge
         v-if="dockStore.isVisible(AppEnum.microsoftEdge)"
       />
     </lazy-transition-scale>
@@ -223,11 +225,11 @@ export default {
 import { useDockStore } from "~/store/dockStore";
 import { AppEnum } from "~/enums/app.enum";
 import { ContextMenuEnum, useContextMenuStore } from "~/store/contextMenuStore";
-import ContextMenuDesktopSortBy from "~/components/el/context-menu/desktop/ContextMenuDesktopSortBy.vue";
-import ContextMenuDesktopNew from "~/components/el/context-menu/desktop/ContextMenuDesktopNew.vue";
-const ContextMenuDesktopView = defineAsyncComponent(
+import ElContextMenuDesktopSortBy from "~/components/el/context-menu/desktop/ElContextMenuDesktopSortBy.vue";
+import ElContextMenuDesktopNew from "~/components/el/context-menu/desktop/ElContextMenuDesktopNew.vue";
+const ElContextMenuDesktopView = defineAsyncComponent(
   () =>
-    import("~/components/el/context-menu/desktop/ContextMenuDesktopView.vue")
+    import("~/components/el/context-menu/desktop/ElContextMenuDesktopView.vue")
 );
 
 const dockStore = useDockStore();

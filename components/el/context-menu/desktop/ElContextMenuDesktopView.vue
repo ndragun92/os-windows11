@@ -4,7 +4,7 @@
       ref="elContextMenuDesktopView"
       class="context__menu-list context__menu-list--submenu w-[267px]"
     >
-      <el-context-menu-item>
+      <global-context-menu-item>
         <template #custom>
           <div class="-ml-[5px] w-[25px] flex items-center justify-center">
             <Icon size="20" name="bi:dot" />
@@ -21,8 +21,8 @@
             </div>
           </div>
         </template>
-      </el-context-menu-item>
-      <el-context-menu-item>
+      </global-context-menu-item>
+      <global-context-menu-item>
         <template #custom>
           <div class="-ml-[5px] w-[25px] flex items-center justify-center">
             <Icon size="20" name="bi:dot" />
@@ -39,8 +39,8 @@
             </div>
           </div>
         </template>
-      </el-context-menu-item>
-      <el-context-menu-item>
+      </global-context-menu-item>
+      <global-context-menu-item>
         <template #custom>
           <div class="-ml-[5px] w-[25px] flex items-center justify-center">
             <Icon size="20" name="bi:dot" />
@@ -57,9 +57,9 @@
             </div>
           </div>
         </template>
-      </el-context-menu-item>
-      <el-context-menu-divider />
-      <el-context-menu-item>
+      </global-context-menu-item>
+      <global-context-menu-divider />
+      <global-context-menu-item>
         <template #custom>
           <div class="-ml-[5px] w-[25px] flex items-center justify-center">
             <Icon size="20" name="ion:ios-checkmark" />
@@ -73,8 +73,8 @@
             </div>
           </div>
         </template>
-      </el-context-menu-item>
-      <el-context-menu-item>
+      </global-context-menu-item>
+      <global-context-menu-item>
         <template #custom>
           <div class="-ml-[5px] w-[25px] flex items-center justify-center">
             <Icon size="20" name="ion:ios-checkmark" />
@@ -88,9 +88,9 @@
             </div>
           </div>
         </template>
-      </el-context-menu-item>
-      <el-context-menu-divider />
-      <el-context-menu-item>
+      </global-context-menu-item>
+      <global-context-menu-divider />
+      <global-context-menu-item>
         <template #custom>
           <div class="-ml-[5px] w-[25px] flex items-center justify-center">
             <Icon size="20" name="ion:ios-checkmark" />
@@ -104,7 +104,7 @@
             </div>
           </div>
         </template>
-      </el-context-menu-item>
+      </global-context-menu-item>
     </ul>
   </div>
 </template>
