@@ -1,6 +1,6 @@
 import { test, describe, expect } from "vitest";
 import { mount } from "@vue/test-utils";
-import GlobalButton from "./components/global/GlobalButton/GlobalButton.vue";
+import GlobalButton from "@/components/global/GlobalButton/GlobalButton.vue";
 
 describe("GlobalButton", () => {
   test("renders name", async () => {
