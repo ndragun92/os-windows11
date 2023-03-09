@@ -96,5 +96,10 @@ export default defineNuxtConfig({
     "@nuxt/image-edge",
     // https://nuxt.com/modules/robots
     "@nuxtjs/robots",
+    // https://nuxt.com/modules/simple-sitemap
+    "nuxt-simple-sitemap",
   ],
+  sitemap: {
+    hostname: "https://os-windows11.vercel.app",
+  },
 });
