@@ -46,7 +46,7 @@ const props = defineProps<{
 <style lang="scss" scoped>
 .button {
   &__tooltip {
-    @apply opacity-0 transition duration-200 delay-300;
+    @apply pointer-events-none opacity-0 transition duration-200 delay-300;
     //transition: all 0.2s linear 1s;
   }
 }

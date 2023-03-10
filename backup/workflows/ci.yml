@@ -1,0 +1,68 @@
+name: Unit + E2E Tests
+on:
+  push:
+    branches: [ main, dev ]
+  pull_request:
+    branches: [ main ]
+jobs:
+  run-unit-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: corepack enable
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      - name: 🧪 Run Init Tests
+        run: npm run test
+  run-e2e-test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 18
+
+    - name: 💤 Wait for 30 seconds
+      run: |
+        echo "Waiting for 30 seconds..."
+        sleep 30
+        echo "Ready to run tests!"
+
+    - name: 📢 Set environment variable based on branch
+      run: |
+        if [ "$GITHUB_REF" = "refs/heads/main" ]; then
+          echo "Setting BASE_URL to main_value"
+          echo "BASE_URL=https://os-windows11.vercel.app" >> $GITHUB_ENV
+        elif [ "$GITHUB_REF" = "refs/heads/dev" ]; then
+          echo "Setting BASE_URL to develop_value"
+          echo "BASE_URL=https://os-windows11-git-dev-ndragun92.vercel.app" >> $GITHUB_ENV
+        else
+          echo "Setting BASE_URL to default_value"
+          echo "BASE_URL=http://localhost:3000" >> $GITHUB_ENV
+        fi
+
+    - name: ⭐ Echo Variables
+      run: |
+        echo "BASE_URL is set to $BASE_URL"
+
+    - name: 📦 Install dependencies
+      run: npm ci
+
+    - name: ⌛ Install Playwright Browsers
+      run: npx playwright install --with-deps
+
+    - name: 🧪 Run Playwright Tests
+      run: npx playwright test
+
+    - uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: playwright-report
+        path: playwright-report/
+        retention-days: 30

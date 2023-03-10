@@ -30,7 +30,8 @@ export const useDockStore = defineStore("dock", () => {
     return activeApps.data.includes(app);
   };
 
-  const open = async (app: AppEnum, force = false) => {
+  const open = async (app: AppEnum | undefined, force = false) => {
+    if (!app) return;
     if (force) {
       if (!activeApps.data.includes(app)) {
         activeApps.data.push(app);

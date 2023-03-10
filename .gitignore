@@ -12,5 +12,11 @@ dist
 .idea
 .unlighthouse
 
+# unit tests
+coverage
+
 # misc
 .DS_Store
+/test-results/
+/playwright-report/
+/playwright/.cache/

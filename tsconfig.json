@@ -4,6 +4,6 @@
   "compilerOptions": {
     "noImplicitAny": false,
     "importsNotUsedAsValues": "error",
-    "types": ["@unlighthouse/nuxt", "@types/wavesurfer.js", "@interactjs/types"]
+    "types": ["@interactjs/types"]
   }
 }

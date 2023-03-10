@@ -32,7 +32,7 @@
               <!-- HEADER MENU END -->
               <!-- APPS MENU START -->
               <div class="mt-[20px] -mx-[30px] grid grid-cols-6 gap-y-[20px]">
-                <el-button
+                <global-button
                   v-for="app in apps.data"
                   :key="app.name"
                   class="py-[5px] flex flex-col items-center"
@@ -43,7 +43,7 @@
                       v-if="app.icon"
                       class="w-[32px] h-[32px]"
                     />
-                    <el-image
+                    <global-image
                       v-else
                       class="block w-[32px] h-[32px]"
                       :src="app.iconName"
@@ -51,14 +51,14 @@
                     />
                     <p class="mt-[3px] text-[12px]">{{ app.name }}</p>
                   </template>
-                </el-button>
+                </global-button>
               </div>
               <!-- APPS MENU END -->
               <!-- RECOMMENDED MENU START -->
               <div class="mt-[48px]">
                 <p class="text-[14px]">Recommended</p>
                 <div class="mt-[20px] -mx-[3px]">
-                  <el-button
+                  <global-button
                     v-for="app in recommendedApps.data"
                     :key="app.name"
                     class="p-[5px] gap-[12px] flex items-center"
@@ -69,7 +69,7 @@
                         v-if="app.icon"
                         class="w-[32px] h-[32px]"
                       />
-                      <el-image
+                      <global-image
                         v-else
                         class="block w-[32px] h-[32px]"
                         :src="app.iconName"
@@ -82,7 +82,7 @@
                         </p>
                       </div>
                     </template>
-                  </el-button>
+                  </global-button>
                 </div>
               </div>
               <!-- RECOMMENDED MENU END -->
@@ -108,7 +108,7 @@ const emit = defineEmits(["close"]);
 
 const elStartMenu = ref<HTMLElement | null>(null);
 
-/* onClickOutside(elStartMenu, () => emit("close")); */
+onClickOutside(elStartMenu, () => emit("close"));
 
 const apps = reactive({
   data: [
@@ -208,6 +208,7 @@ const recommendedApps = reactive({
   --ElStartMenu-bg-bottom-color: rgba(0, 0, 0, 0.3);
   --ElStartMenu-border-bottom-color: rgba(0, 0, 0, 0.1);
   --ElStartMenu-input-background-color: rgba(30, 30, 30, 0.7);
+  --ElStartMenu-apps-background-color: rgba(255, 255, 255, 0.0605);
 }
 
 [data-theme="theme2"] {

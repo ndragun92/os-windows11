@@ -23,6 +23,7 @@
   <transition-expand appear>
     <div
       v-if="$route.name === 'index' && showAboutModal"
+      data-test="about-modal"
       class="fixed top-0 right-0 bottom-0 left-0 p-20 bg-black bg-opacity-50 backdrop-blur-[5px] z-[9999999] flex justify-center items-center"
     >
       <div
@@ -88,11 +89,12 @@
           class="h-[65px] bg-black bg-opacity-90 border-t border-white border-opacity-5 flex items-center justify-between px-8"
         >
           <a
-            class="block py-2 px-4 rounded-md font-medium hover:underline flex items-center gap-2"
+            class="py-2 px-4 rounded-md font-medium hover:underline flex items-center gap-2"
             href="mailto:nemanjadragun@gmail.com?subject=os-windows11"
             ><Icon size="24" name="material-symbols:mail" />Contact me</a
           >
           <button
+            data-test="about-modal-understand"
             class="bg-blue-400 hover:bg-blue-500 py-2 px-4 rounded-md text-black font-medium"
             type="button"
             @click="showAboutModal = false"
