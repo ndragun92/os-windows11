@@ -238,7 +238,7 @@ const contextMenu = useContextMenuStore();
 const { items, getItemByIndex, getItemIndexByIndex } = useDesktop();
 
 const dragging = ref(false);
-const onDragStart = (e, n) => {
+const onDragStart = (e: DragEvent, n: number) => {
   console.info("onDragStart");
   dragging.value = true;
   e?.dataTransfer?.setData(
@@ -256,13 +256,13 @@ const onDragEnd = () => {
   dragging.value = false;
   console.info("onDragEnd");
 };
-const onDragover = (e) => {
+const onDragover = (e: DragEvent) => {
   e.preventDefault();
   if (e?.dataTransfer?.dropEffect) {
     e.dataTransfer.dropEffect = "move";
   }
 };
-const onDrop = (e) => {
+const onDrop = (e: any) => {
   e.preventDefault();
   if (!e.target?.id?.startsWith("target--")) return;
   if (!e.target?.children?.length) {
@@ -347,9 +347,8 @@ const contextMenuDesktopShowSub = reactive({
 [data-theme="theme1"] {
   --desktop-item-text-color: #ffffff;
 }
-
 [data-theme="theme2"] {
-  --el-footer-bg-color: rgba(68, 68, 68, 0.3);
+  --desktop-item-text-color: #ffffff;
 }
 </style>
 

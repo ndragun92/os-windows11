@@ -2,7 +2,12 @@
   <footer
     class="h-[48px] pl-[8px] pr-[12px] bg-[var(--el-footer-bg-color)] backdrop-blur-[100px] relative z-40 border-t-[1px] border-white border-opacity-[0.15]"
     @contextmenu.self.prevent="
-      contextMenu.open($event, ContextMenuEnum.footer, undefined, height - 49)
+      contextMenu.open(
+        $event,
+        ContextMenuEnum.footer,
+        undefined,
+        (height || 0) - 49
+      )
     "
   >
     <div class="flex justify-between items-center h-full pointer-events-none">
@@ -104,7 +109,7 @@
                 <icon-multi-desktop class="w-6 h-6" />
               </template>
               <template #custom="{ active, focused }">
-                <global-button-active v-show="active" :focused="focused" />
+                <global-button-active v-show="active" :focused="focused!" />
               </template>
             </global-button>
           </li>
@@ -121,7 +126,7 @@
                 <icon-file-explorer class="w-6 h-6" />
               </template>
               <template #custom="{ active, focused }">
-                <global-button-active v-show="active" :focused="focused" />
+                <global-button-active v-show="active" :focused="focused!" />
               </template>
             </global-button>
           </li>
@@ -139,7 +144,7 @@
                   <icon-microsoft-edge class="w-7 h-7" />
                 </template>
                 <template #custom="{ active, focused }">
-                  <global-button-active v-show="active" :focused="focused" />
+                  <global-button-active v-show="active" :focused="focused!" />
                 </template>
               </global-button>
             </client-only>

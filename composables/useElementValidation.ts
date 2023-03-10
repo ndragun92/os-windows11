@@ -1,5 +1,5 @@
 export default function useElementValidation() {
-  const isOutOfViewport = (elem) => {
+  const isOutOfViewport = (elem: HTMLElement | undefined) => {
     if (!elem) return;
     // Get element's bounding
     const bounding = elem.getBoundingClientRect();
@@ -32,7 +32,7 @@ export default function useElementValidation() {
     return out;
   };
 
-  const windowDragOutsideScope = (elem) => {
+  const windowDragOutsideScope = (elem: HTMLElement | undefined) => {
     if (!elem) return;
     // Get element's bounding
     const bounding = elem.getBoundingClientRect();

@@ -59,8 +59,8 @@
         class="relative transition duration-200 border-b border-[var(--window-header-border-bottom-color)]"
         :class="[
           dockStore.isFocused(AppEnum.microsoftEdge)
-            ? 'bg-[var(--app-microsoft-edge-header-color-focused)]'
-            : 'bg-[var(--app-microsoft-edge-header-color)]',
+            ? 'bg-[var(--GlobalMicrosoftEdge-header-color-focused)]'
+            : 'bg-[var(--GlobalMicrosoftEdge-header-color)]',
           maximized ? 'h-auto' : 'h-11',
         ]"
       >
@@ -72,8 +72,8 @@
             class="pointer-events-auto -mb-[1px] w-[25%] max-w-[240px] rounded-tr-md rounded-tl-md h-9 flex items-center px-3 text-xs"
             :class="
               dockStore.isFocused(AppEnum.microsoftEdge)
-                ? 'bg-[var(--app-microsoft-edge-tab-color-focused)]'
-                : 'bg-[var(--app-microsoft-edge-tab-color-focused)]'
+                ? 'bg-[var(--GlobalMicrosoftEdge-tab-color-focused)]'
+                : 'bg-[var(--GlobalMicrosoftEdge-tab-color-focused)]'
             "
           >
             <div class="w-full flex items-center justify-between gap-2">
@@ -94,8 +94,8 @@
               class="h-7 w-7 flex items-center justify-center rounded-md transition duration-200"
               :class="
                 dockStore.isFocused(AppEnum.microsoftEdge)
-                  ? 'hover:bg-[var(--app-microsoft-edge-tab-color-button-hover)]'
-                  : 'hover:bg-[var(--app-microsoft-edge-tab-color-button-hover)]'
+                  ? 'hover:bg-[var(--GlobalMicrosoftEdge-tab-color-button-hover)]'
+                  : 'hover:bg-[var(--GlobalMicrosoftEdge-tab-color-button-hover)]'
               "
             >
               <Icon size="20" name="fluent:add-16-regular" />
@@ -107,14 +107,14 @@
         class="h-[39px] border-b border-[var(--window-border-color)]"
         :class="
           dockStore.isFocused(AppEnum.microsoftEdge)
-            ? 'bg-[var(--app-microsoft-edge-tab-color-focused)]'
-            : 'bg-[var(--app-microsoft-edge-tab-color-focused)]'
+            ? 'bg-[var(--GlobalMicrosoftEdge-tab-color-focused)]'
+            : 'bg-[var(--GlobalMicrosoftEdge-tab-color-focused)]'
         "
       >
         <div class="flex items-center gap-1 h-full px-2">
           <div>
             <button
-              class="w-10 h-8 rounded-sm transition duration-200 hover:bg-[var(--app-microsoft-edge-tab-button-hover)]"
+              class="w-10 h-8 rounded-sm transition duration-200 hover:bg-[var(--GlobalMicrosoftEdge-tab-button-hover)]"
               type="button"
             >
               <Icon size="24" name="bx:arrow-back" />
@@ -122,7 +122,7 @@
           </div>
           <div>
             <button
-              class="w-10 h-8 rounded-sm transition duration-200 hover:bg-[var(--app-microsoft-edge-tab-button-hover)]"
+              class="w-10 h-8 rounded-sm transition duration-200 hover:bg-[var(--GlobalMicrosoftEdge-tab-button-hover)]"
               type="button"
             >
               <Icon size="24" name="ep:refresh-right" />
@@ -131,7 +131,7 @@
           <div ref="searchEL" class="relative w-full">
             <input
               v-model="url"
-              class="bg-[var(--app-microsoft-edge-search-bar)] w-full text-sm pl-12 font-light focus:outline-none"
+              class="bg-[var(--GlobalMicrosoftEdge-search-bar)] w-full text-sm pl-12 font-light focus:outline-none"
               type="text"
               :class="
                 inputFocused
@@ -146,7 +146,7 @@
             </div>
             <div
               v-if="inputFocused"
-              class="absolute z-10 top-9 left-0 right-0 bg-[var(--app-microsoft-edge-search-bar)] rounded-bl-md rounded-br-md border-r border-l border-b border-neutral-900 overflow-hidden"
+              class="absolute z-10 top-9 left-0 right-0 bg-[var(--GlobalMicrosoftEdge-search-bar)] rounded-bl-md rounded-br-md border-r border-l border-b border-neutral-900 overflow-hidden"
             >
               <ul>
                 <li
@@ -155,7 +155,7 @@
                   class="relative w-full text-sm h-[34px] border-l-4 pl-12 font-light flex items-center"
                   :class="
                     n === 1
-                      ? 'bg-[var(--app-microsoft-edge-search-bar-dropdown-item-hover)] border-blue-400'
+                      ? 'bg-[var(--GlobalMicrosoftEdge-search-bar-dropdown-item-hover)] border-blue-400'
                       : 'border-transparent'
                   "
                 >
@@ -171,7 +171,7 @@
           </div>
           <div>
             <button
-              class="w-10 h-8 rounded-sm transition duration-200 hover:bg-[var(--app-microsoft-edge-tab-button-hover)]"
+              class="w-10 h-8 rounded-sm transition duration-200 hover:bg-[var(--GlobalMicrosoftEdge-tab-button-hover)]"
               type="button"
             >
               <Icon size="20" name="fluent-mdl2:favorite-list" />
@@ -179,7 +179,7 @@
           </div>
           <div>
             <button
-              class="w-10 h-8 rounded-sm transition duration-200 hover:bg-[var(--app-microsoft-edge-tab-button-hover)]"
+              class="w-10 h-8 rounded-sm transition duration-200 hover:bg-[var(--GlobalMicrosoftEdge-tab-button-hover)]"
               type="button"
             >
               <Icon size="20" name="fluent:collections-add-20-regular" />
@@ -187,7 +187,7 @@
           </div>
           <div>
             <button
-              class="w-10 h-8 rounded-sm transition duration-200 hover:bg-[var(--app-microsoft-edge-tab-button-hover)]"
+              class="w-10 h-8 rounded-sm transition duration-200 hover:bg-[var(--GlobalMicrosoftEdge-tab-button-hover)]"
               type="button"
             >
               <Icon size="24" name="mdi:dots-horizontal" />
@@ -299,13 +299,13 @@ watch(
 
 <style>
 [data-theme="theme1"] {
-  --app-microsoft-edge-search-bar: #2b2b2b;
-  --app-microsoft-edge-search-bar-dropdown-item-hover: #383838;
-  --app-microsoft-edge-header-color: #2e2e2e;
-  --app-microsoft-edge-header-color-focused: #202020;
-  --app-microsoft-edge-tab-color-focused: #3b3b3b;
-  --app-microsoft-edge-tab-color-button-hover: #4f4f4f;
-  --app-microsoft-edge-tab-button-hover: #4a4a4a;
+  --GlobalMicrosoftEdge-search-bar: #2b2b2b;
+  --GlobalMicrosoftEdge-search-bar-dropdown-item-hover: #383838;
+  --GlobalMicrosoftEdge-header-color: #2e2e2e;
+  --GlobalMicrosoftEdge-header-color-focused: #202020;
+  --GlobalMicrosoftEdge-tab-color-focused: #3b3b3b;
+  --GlobalMicrosoftEdge-tab-color-button-hover: #4f4f4f;
+  --GlobalMicrosoftEdge-tab-button-hover: #4a4a4a;
   --theme-primary-color: #22d3ee;
 }
 </style>

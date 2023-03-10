@@ -26,11 +26,11 @@ export default function useDesktop() {
     ],
   });
 
-  const getItemByIndex = (slotIndex) => {
+  const getItemByIndex = (slotIndex: number) => {
     return items?.value?.data?.find((obj) => obj.position === slotIndex);
   };
 
-  const getItemIndexByIndex = (slotIndex) => {
+  const getItemIndexByIndex = (slotIndex: number) => {
     return items?.value?.data?.findIndex((obj) => obj.position === slotIndex);
   };
 
