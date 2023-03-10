@@ -28,8 +28,8 @@ export const useContextMenuStore = defineStore("contextMenu", () => {
   const open = (
     e: MouseEvent,
     value: ContextMenuEnum,
-    x = undefined,
-    y = undefined
+    x: undefined | number = undefined,
+    y: undefined | number = undefined
   ) => {
     type.value = value;
     switch (type.value) {

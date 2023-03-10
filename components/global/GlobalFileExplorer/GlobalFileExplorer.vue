@@ -2,11 +2,11 @@
   <div
     id="el-explorer"
     ref="el"
-    class="el__manipulate-window fixed border border-[var(--window-border-color)] bg-[var(--window-wrapper-color)] overflow-hidden"
+    class="el__manipulate-window fixed border border-[var(--GlobalFileExplorer-border-color)] bg-[var(--GlobalFileExplorer-wrapper-color)] overflow-hidden"
     :class="[
       dockStore.isFocused(AppEnum.fileExplorer)
-        ? 'z-40 drop-shadow-[var(--window-container-shadow-color-focused)]'
-        : 'z-30 drop-shadow-[var(--window-container-shadow-color)]',
+        ? 'z-40 drop-shadow-[var(--GlobalFileExplorer-container-shadow-color-focused)]'
+        : 'z-30 drop-shadow-[var(--GlobalFileExplorer-container-shadow-color)]',
       {
         'rounded-lg': !maximized,
         'el__manipulate-window--maximized': maximized,
@@ -59,11 +59,11 @@
         </div>
       </div>
       <div
-        class="relative transition duration-200 border-b border-[var(--window-header-border-bottom-color)]"
+        class="relative transition duration-200 border-b border-[var(--GlobalFileExplorer-header-border-bottom-color)]"
         :class="[
           dockStore.isFocused(AppEnum.fileExplorer)
-            ? 'bg-[var(--window-header-color-focused)] border-[var(--window-header-border-bottom-color-focused)]'
-            : 'bg-[var(--window-header-color)] border-[var(--window-header-border-bottom-color)]',
+            ? 'bg-[var(--GlobalFileExplorer-header-color-focused)] border-[var(--GlobalFileExplorer-header-border-bottom-color-focused)]'
+            : 'bg-[var(--GlobalFileExplorer-header-color)] border-[var(--GlobalFileExplorer-header-border-bottom-color)]',
           maximized ? 'h-auto' : 'h-11',
         ]"
       >
@@ -79,8 +79,8 @@
             class="pointer-events-auto -mb-[1px] w-[25%] max-w-[240px] rounded-tr-md rounded-tl-md h-9 flex items-center px-3 text-xs"
             :class="
               dockStore.isFocused(AppEnum.fileExplorer)
-                ? 'bg-[var(--window-tab-color-focused)] border-t border-r border-l border-[var(--window-tab-border-color-focused)]'
-                : 'bg-[var(--window-tab-color)] border-t border-r border-l border-[var(--window-tab-border-color)]'
+                ? 'bg-[var(--GlobalFileExplorer-tab-color-focused)] border-t border-r border-l border-[var(--GlobalFileExplorer-tab-border-color-focused)]'
+                : 'bg-[var(--GlobalFileExplorer-tab-color)] border-t border-r border-l border-[var(--GlobalFileExplorer-tab-border-color)]'
             "
           >
             <div class="w-full flex items-center justify-between gap-2">
@@ -101,8 +101,8 @@
               class="h-7 w-10 flex items-center justify-center rounded-md"
               :class="
                 dockStore.isFocused(AppEnum.fileExplorer)
-                  ? 'hover:bg-[var(--window-tab-color-focused)]'
-                  : 'hover:bg-[var(--window-tab-color)]'
+                  ? 'hover:bg-[var(--GlobalFileExplorer-tab-color-focused)]'
+                  : 'hover:bg-[var(--GlobalFileExplorer-tab-color)]'
               "
             >
               <Icon size="16" name="fluent:add-16-regular" />
@@ -111,15 +111,15 @@
         </ul>
       </div>
       <div
-        class="h-[54px] border-b border-[var(--window-border-color)]"
+        class="h-[54px] border-b border-[var(--GlobalFileExplorer-border-color)]"
         :class="
           dockStore.isFocused(AppEnum.fileExplorer)
-            ? 'bg-[var(--window-tab-color-focused)]'
-            : 'bg-[var(--window-tab-color)]'
+            ? 'bg-[var(--GlobalFileExplorer-tab-color-focused)]'
+            : 'bg-[var(--GlobalFileExplorer-tab-color)]'
         "
       ></div>
       <div
-        class="flex-1 max-h-full overflow-hidden bg-[var(--window-container-color)] p-2"
+        class="flex-1 max-h-full overflow-hidden bg-[var(--GlobalFileExplorer-container-color)] p-2"
       >
         <div class="w-full h-full flex items-center justify-center">
           <Icon class="mr-2" size="24" name="fluent-emoji-flat:warning" />
@@ -243,7 +243,6 @@ watch(
   }
 );
 
-// region Window Resize
 initResizeObserver();
 
 watch(
@@ -263,49 +262,37 @@ watch(
     }
   }
 );
-// endregion
 </script>
 
 <style>
-:root {
-  /*--window-header-color: #202020;*/
-  /*--window-header-color-focused: #000b22;*/
-  /*--window-header-border-bottom-color: #1d1d1d;*/
-  /*--window-header-border-bottom-color-focused: transparent;*/
-  /*--window-tab-color: #2c2c2c;*/
-  /*--window-tab-color-focused: #1a1f2e;*/
-  /*--window-wrapper-color: #1c1c1c;*/
-  /*--window-container-color: #191919;*/
-  /*--window-border-color: #3a3a3a;*/
-}
-
 [data-theme="theme1"] {
-  --window-container-shadow-color: 0 0 20px rgba(0, 0, 0, 0.15);
-  --window-container-shadow-color-focused: 0 0 20px rgba(0, 0, 0, 0.3);
-  --window-header-color: #e8e8e8;
-  --window-header-color-focused: #ccdeec;
-  --window-header-border-bottom-color: #dadada;
-  --window-header-border-bottom-color-focused: #bccdd9;
-  --window-tab-border-color: #dadada;
-  --window-tab-border-color-focused: #bccdd9;
-  --window-tab-color: #f8f8f8;
-  --window-tab-color-focused: #f0f5f8;
-  --window-wrapper-color: #ffffff;
-  --window-container-color: #ffffff;
-  --window-border-color: #bccdd9;
+  --GlobalFileExplorer-container-shadow-color: 0 0 20px rgba(0, 0, 0, 0.15);
+  --GlobalFileExplorer-container-shadow-color-focused: 0 0 20px
+    rgba(0, 0, 0, 0.3);
+  --GlobalFileExplorer-header-color: #e8e8e8;
+  --GlobalFileExplorer-header-color-focused: #ccdeec;
+  --GlobalFileExplorer-header-border-bottom-color: #dadada;
+  --GlobalFileExplorer-header-border-bottom-color-focused: #bccdd9;
+  --GlobalFileExplorer-tab-border-color: #dadada;
+  --GlobalFileExplorer-tab-border-color-focused: #bccdd9;
+  --GlobalFileExplorer-tab-color: #f8f8f8;
+  --GlobalFileExplorer-tab-color-focused: #f0f5f8;
+  --GlobalFileExplorer-wrapper-color: #ffffff;
+  --GlobalFileExplorer-container-color: #ffffff;
+  --GlobalFileExplorer-border-color: #bccdd9;
 }
 
 [data-theme="theme2"] {
-  --window-header-color: #202020;
-  --window-header-color-focused: #000b22;
-  --window-header-border-bottom-color: #1d1d1d;
-  --window-header-border-bottom-color-focused: transparent;
-  --window-tab-border-color: #1d1d1d;
-  --window-tab-border-color-focused: transparent;
-  --window-tab-color: #2c2c2c;
-  --window-tab-color-focused: #1a1f2e;
-  --window-wrapper-color: #1c1c1c;
-  --window-container-color: #191919;
-  --window-border-color: #3a3a3a;
+  --GlobalFileExplorer-header-color: #202020;
+  --GlobalFileExplorer-header-color-focused: #000b22;
+  --GlobalFileExplorer-header-border-bottom-color: #1d1d1d;
+  --GlobalFileExplorer-header-border-bottom-color-focused: transparent;
+  --GlobalFileExplorer-tab-border-color: #1d1d1d;
+  --GlobalFileExplorer-tab-border-color-focused: transparent;
+  --GlobalFileExplorer-tab-color: #2c2c2c;
+  --GlobalFileExplorer-tab-color-focused: #1a1f2e;
+  --GlobalFileExplorer-wrapper-color: #1c1c1c;
+  --GlobalFileExplorer-container-color: #191919;
+  --GlobalFileExplorer-border-color: #3a3a3a;
 }
 </style>
