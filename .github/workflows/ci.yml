@@ -53,10 +53,11 @@ jobs:
         echo "BASE_URL3: $BASE_URL3"
 
     - name: 🧪 Run Playwright Tests
-      run: npx playwright test
+      run: |
+        npx playwright test
+        echo "BASE_URL2: BASE_URL2"
       env:
         BASE_URL: ${{ github.event.deployment_status.target_url }}
-        run: echo "github.event.deployment_status.target_url"
 
     - uses: actions/upload-artifact@v3
       if: always()
