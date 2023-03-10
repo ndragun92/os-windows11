@@ -1,9 +1,9 @@
 name: Unit + E2E Tests
 on:
   push:
-    branches: [ main ]
+    branches: [ main, dev ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, dev ]
 jobs:
   run-unit-test:
     runs-on: ubuntu-latest
@@ -33,6 +33,23 @@ jobs:
         echo "Waiting for 3 minutes..."
         sleep 180
         echo "Ready to run tests!"
+
+    - name: Set environment variable based on branch
+      run: |
+        if [ "$GITHUB_REF" = "refs/heads/main" ]; then
+          echo "Setting ENV_VAR to main_value"
+          echo "ENV_VAR=os-windows11.vercel.app" >> $GITHUB_ENV
+        elif [ "$GITHUB_REF" = "refs/heads/dev" ]; then
+          echo "Setting ENV_VAR to develop_value"
+          echo "ENV_VAR=https://os-windows11-git-dev-ndragun92.vercel.app" >> $GITHUB_ENV
+        else
+          echo "Setting ENV_VAR to default_value"
+          echo "ENV_VAR=os-windows11.vercel.app" >> $GITHUB_ENV
+        fi
+
+    - name: My Action
+      run: |
+        echo "ENV_VAR is set to $ENV_VAR"
 
     - name: 📦 Install dependencies
       run: npm ci
