@@ -28,13 +28,13 @@ jobs:
       with:
         node-version: 18
 
-    - name: ⌛ Wait for 3 minutes
+    - name: 💤 Wait for 3 minutes
       run: |
         echo "Waiting for 3 minutes..."
         sleep 180
         echo "Ready to run tests!"
 
-    - name: Set environment variable based on branch
+    - name: 📢 Set environment variable based on branch
       run: |
         if [ "$GITHUB_REF" = "refs/heads/main" ]; then
           echo "Setting ENV_VAR to main_value"
@@ -47,20 +47,20 @@ jobs:
           echo "ENV_VAR=os-windows11.vercel.app" >> $GITHUB_ENV
         fi
 
-    - name: My Action
+    - name: ⭐ Echo Variables
       run: |
         echo "ENV_VAR is set to $ENV_VAR"
 
     - name: 📦 Install dependencies
       run: npm ci
 
-    - name: ⭐ Install Playwright Browsers
+    - name: ⌛ Install Playwright Browsers
       run: npx playwright install --with-deps
 
     - name: 🧪 Run Playwright Tests
       run: npx playwright test
       env:
-        BASE_URL: "https://os-windows11.vercel.app"
+        BASE_URL: $ENV_VAR
 
     - uses: actions/upload-artifact@v3
       if: always()
