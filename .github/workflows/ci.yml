@@ -34,11 +34,23 @@ jobs:
     - name: ⌛ Install Playwright Browsers
       run: npx playwright install --with-deps
 
-    - name: ⚡ Debug environment variables
-      run: |
-        echo "BASE_URL: $BASE_URL"
+    - name: ⚡ Debug environment variables 1
       env:
         BASE_URL: ${{ github.event.deployment_status.target_url }}
+      run: |
+        echo "BASE_URL: $BASE_URL"
+
+    - name: ⚡ Debug environment variables 2
+      run: |
+        echo "BASE_URL2: $BASE_URL2"
+      env:
+        BASE_URL2: "https://os-windows11.vercel.app"
+
+    - name: ⚡ Debug environment variables 3
+      env:
+        BASE_URL3: "https://os-windows11.vercel.app"
+      run: |
+        echo "BASE_URL3: $BASE_URL3"
 
     - name: 🧪 Run Playwright Tests
       run: npx playwright test
