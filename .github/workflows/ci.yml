@@ -31,7 +31,7 @@ jobs:
     - name: 💤 Wait for 3 minutes
       run: |
         echo "Waiting for 3 minutes..."
-        sleep 18
+        sleep 180
         echo "Ready to run tests!"
 
     - name: 📢 Set environment variable based on branch
