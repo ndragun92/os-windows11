@@ -1,11 +1,25 @@
-name: Playwright Tests
+name: Unit + E2E Tests
 on:
   push:
     branches: [ main, dev ]
   pull_request:
     branches: [ main, dev ]
 jobs:
-  run-e2es:
+  run-unit-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: corepack enable
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      - name: 🧪 Run Init Tests
+        run: npm run test
+  run-e2e-test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
@@ -13,14 +27,18 @@ jobs:
     - uses: actions/setup-node@v3
       with:
         node-version: 18
-    - name: Install dependencies
+
+    - name: 📦 Install dependencies
       run: npm ci
-    - name: Install Playwright Browsers
+
+    - name: ⌛ Install Playwright Browsers
       run: npx playwright install --with-deps
-    - name: Run Playwright tests
+
+    - name: 🧪 Run Playwright Tests
       run: npx playwright test
       env:
         BASE_URL: ${{ github.event.deployment_status.target_url }}
+
     - uses: actions/upload-artifact@v3
       if: always()
       with:
