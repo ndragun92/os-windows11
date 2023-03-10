@@ -23,7 +23,7 @@
   <transition-expand appear>
     <div
       v-if="$route.name === 'index' && showAboutModal"
-      data-test="about-modal"
+      data-test="about-modal1"
       class="fixed top-0 right-0 bottom-0 left-0 p-20 bg-black bg-opacity-50 backdrop-blur-[5px] z-[9999999] flex justify-center items-center"
     >
       <div
