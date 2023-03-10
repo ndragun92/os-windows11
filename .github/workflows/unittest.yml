@@ -18,8 +18,5 @@ jobs:
       - name: 📦 Install dependencies
         run: npm ci
 
-      - name: 🚧 Set up project
-        run: npm run nuxi prepare
-
       - name: 🧪 Test project
         run: npm run test
