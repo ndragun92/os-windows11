@@ -4,10 +4,10 @@
       `pointer-events-auto relative flex items-${
         props.align || 'center'
       } justify-${props.justify || 'center'} rounded transition duration-200`,
-      'hover:bg-[var(--el-button-bg-color--hover)]',
+      'hover:bg-[var(--GlobalButton-bg-color--hover)]',
       {
         'hover-scale': props.hoverScale,
-        'bg-[var(--el-button-bg-color--focused)] top-shadow': props.focused,
+        'bg-[var(--GlobalButton-bg-color--focused)] top-shadow': props.focused,
       },
     ]"
     type="button"
@@ -19,7 +19,7 @@
       v-if="props.tooltip"
       class="button__tooltip"
       :class="[
-        'absolute z-[60] text-xs bg-[var(--el-button-tooltip-bg-color)] text-[var(--el-button-tooltip-text-color)] py-1.5 px-2 border border-[var(--el-button-tooltip-border-color)] rounded whitespace-nowrap backdrop-blur-[25px]',
+        'absolute z-[60] text-xs bg-[var(--GlobalButton-tooltip-bg-color)] text-[var(--GlobalButton-tooltip-text-color)] py-1.5 px-2 border border-[var(--GlobalButton-tooltip-border-color)] rounded whitespace-nowrap backdrop-blur-[25px]',
         tooltipPosition === 'right' ? 'left-0' : 'right-0',
         tooltipPositionYCustom ? tooltipPositionYCustom : '-top-10',
         tooltipClass ? tooltipClass : '',
@@ -72,18 +72,18 @@ button {
 
 <style>
 [data-theme="theme1"] {
-  --el-button-bg-color--hover: rgba(255, 255, 255, 0.6);
-  --el-button-bg-color--focused: rgba(255, 255, 255, 0.5);
-  --el-button-tooltip-bg-color: rgba(255, 255, 255, 0.9);
-  --el-button-tooltip-text-color: rgba(255, 255, 255, 1);
-  --el-button-tooltip-border-color: rgba(255, 255, 255, 1);
+  --GlobalButton-bg-color--hover: rgba(255, 255, 255, 0.6);
+  --GlobalButton-bg-color--focused: rgba(255, 255, 255, 0.5);
+  --GlobalButton-tooltip-bg-color: rgba(255, 255, 255, 0.9);
+  --GlobalButton-tooltip-text-color: rgba(255, 255, 255, 1);
+  --GlobalButton-tooltip-border-color: rgba(255, 255, 255, 1);
 }
 
 [data-theme="theme2"] {
-  --el-button-bg-color--hover: rgba(255, 255, 255, 0.1);
-  --el-button-bg-color--focused: rgba(255, 255, 255, 0.05);
-  --el-button-tooltip-bg-color: rgba(43, 55, 67, 0.8);
-  --el-button-tooltip-text-color: rgba(255, 255, 255, 1);
-  --el-button-tooltip-border-color: rgba(0, 0, 0, 0.1);
+  --GlobalButton-bg-color--hover: rgba(255, 255, 255, 0.1);
+  --GlobalButton-bg-color--focused: rgba(255, 255, 255, 0.05);
+  --GlobalButton-tooltip-bg-color: rgba(43, 55, 67, 0.8);
+  --GlobalButton-tooltip-text-color: rgba(255, 255, 255, 1);
+  --GlobalButton-tooltip-border-color: rgba(0, 0, 0, 0.1);
 }
 </style>

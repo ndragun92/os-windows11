@@ -96,6 +96,7 @@ export default function useManipulateWindow(
   const resetWindowPosition = ref(false);
 
   const windowOffscreenValidation = async () => {
+    if (!el.value) return;
     if (windowDragOutsideScope(el.value)?.any) {
       draggableInitialValues.value.data.x = position.x;
       draggableInitialValues.value.data.y = position.y;

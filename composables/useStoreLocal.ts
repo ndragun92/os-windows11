@@ -1,5 +1,5 @@
 export default function useStoreLocal() {
-  const set = (key: string, value) => {
+  const set = (key: string, value: any) => {
     let data = value;
     if (typeof data === "object") {
       data = JSON.stringify(value) as string;
