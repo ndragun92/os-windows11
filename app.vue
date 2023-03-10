@@ -89,7 +89,7 @@
           class="h-[65px] bg-black bg-opacity-90 border-t border-white border-opacity-5 flex items-center justify-between px-8"
         >
           <a
-            class="block py-2 px-4 rounded-md font-medium hover:underline flex items-center gap-2"
+            class="py-2 px-4 rounded-md font-medium hover:underline flex items-center gap-2"
             href="mailto:nemanjadragun@gmail.com?subject=os-windows11"
             ><Icon size="24" name="material-symbols:mail" />Contact me</a
           >

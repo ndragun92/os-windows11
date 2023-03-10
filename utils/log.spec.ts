@@ -5,8 +5,7 @@ describe("GlobalButton", () => {
   test("it shows alert", () => {
     window.alert = vi.fn();
     const message = "Hello from alert!";
-    const wrapper = log().onAlert(message);
-    console.log("wrapper", wrapper);
+    log().onAlert(message);
     expect(window.alert).toBeCalledWith(message);
   });
 });
