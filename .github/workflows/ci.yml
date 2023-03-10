@@ -28,10 +28,10 @@ jobs:
       with:
         node-version: 18
 
-    - name: 💤 Wait for 3 minutes
+    - name: 💤 Wait for 30 seconds
       run: |
-        echo "Waiting for 3 minutes..."
-        sleep 180
+        echo "Waiting for 30 seconds..."
+        sleep 30
         echo "Ready to run tests!"
 
     - name: 📢 Set environment variable based on branch
