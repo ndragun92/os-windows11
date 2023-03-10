@@ -22,6 +22,7 @@
     "@nuxt/test-utils": "^3.2.3",
     "@nuxtjs/fontaine": "^0.2.4",
     "@nuxtjs/tailwindcss": "^6.4.1",
+    "@playwright/test": "^1.31.2",
     "@typescript-eslint/eslint-plugin": "^5.54.1",
     "@typescript-eslint/parser": "^5.54.1",
     "@vitest/coverage-c8": "^0.29.2",

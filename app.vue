@@ -23,6 +23,7 @@
   <transition-expand appear>
     <div
       v-if="$route.name === 'index' && showAboutModal"
+      data-test="about-modal"
       class="fixed top-0 right-0 bottom-0 left-0 p-20 bg-black bg-opacity-50 backdrop-blur-[5px] z-[9999999] flex justify-center items-center"
     >
       <div
@@ -93,6 +94,7 @@
             ><Icon size="24" name="material-symbols:mail" />Contact me</a
           >
           <button
+            data-test="about-modal-understand"
             class="bg-blue-400 hover:bg-blue-500 py-2 px-4 rounded-md text-black font-medium"
             type="button"
             @click="showAboutModal = false"
