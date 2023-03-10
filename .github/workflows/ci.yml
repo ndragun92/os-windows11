@@ -38,13 +38,13 @@ jobs:
       run: |
         if [ "$GITHUB_REF" = "refs/heads/main" ]; then
           echo "Setting BASE_URL to main_value"
-          echo "BASE_URL=os-windows11.vercel.app" >> $GITHUB_ENV
+          echo "BASE_URL=https://os-windows11.vercel.app" >> $GITHUB_ENV
         elif [ "$GITHUB_REF" = "refs/heads/dev" ]; then
           echo "Setting BASE_URL to develop_value"
           echo "BASE_URL=https://os-windows11-git-dev-ndragun92.vercel.app" >> $GITHUB_ENV
         else
           echo "Setting BASE_URL to default_value"
-          echo "BASE_URL=os-windows11.vercel.app" >> $GITHUB_ENV
+          echo "BASE_URL=http://localhost:3000" >> $GITHUB_ENV
         fi
 
     - name: ⭐ Echo Variables
