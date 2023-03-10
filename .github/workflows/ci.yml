@@ -37,19 +37,19 @@ jobs:
     - name: 📢 Set environment variable based on branch
       run: |
         if [ "$GITHUB_REF" = "refs/heads/main" ]; then
-          echo "Setting ENV_VAR to main_value"
-          echo "ENV_VAR=os-windows11.vercel.app" >> $GITHUB_ENV
+          echo "Setting BASE_URL to main_value"
+          echo "BASE_URL=os-windows11.vercel.app" >> $GITHUB_ENV
         elif [ "$GITHUB_REF" = "refs/heads/dev" ]; then
-          echo "Setting ENV_VAR to develop_value"
-          echo "ENV_VAR=https://os-windows11-git-dev-ndragun92.vercel.app" >> $GITHUB_ENV
+          echo "Setting BASE_URL to develop_value"
+          echo "BASE_URL=https://os-windows11-git-dev-ndragun92.vercel.app" >> $GITHUB_ENV
         else
-          echo "Setting ENV_VAR to default_value"
-          echo "ENV_VAR=os-windows11.vercel.app" >> $GITHUB_ENV
+          echo "Setting BASE_URL to default_value"
+          echo "BASE_URL=os-windows11.vercel.app" >> $GITHUB_ENV
         fi
 
     - name: ⭐ Echo Variables
       run: |
-        echo "ENV_VAR is set to $ENV_VAR"
+        echo "BASE_URL is set to $BASE_URL"
 
     - name: 📦 Install dependencies
       run: npm ci
@@ -59,8 +59,6 @@ jobs:
 
     - name: 🧪 Run Playwright Tests
       run: npx playwright test
-      env:
-        BASE_URL: $ENV_VAR
 
     - uses: actions/upload-artifact@v3
       if: always()
