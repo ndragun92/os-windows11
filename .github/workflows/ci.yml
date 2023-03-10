@@ -1,9 +1,9 @@
 name: Unit + E2E Tests
 on:
   push:
-    branches: [ main, dev ]
+    branches: [ main ]
   pull_request:
-    branches: [ main, dev ]
+    branches: [ main ]
 jobs:
   run-unit-test:
     runs-on: ubuntu-latest
@@ -28,10 +28,10 @@ jobs:
       with:
         node-version: 18
 
-    - name: ⌛ Wait for 1 minute and 30 seconds
+    - name: ⌛ Wait for 3 minutes
       run: |
-        echo "Waiting for 1 minute and 30 seconds..."
-        sleep 90
+        echo "Waiting for 3 minutes..."
+        sleep 180
         echo "Ready to run tests!"
 
     - name: 📦 Install dependencies
