@@ -94,7 +94,7 @@
             ><Icon size="24" name="material-symbols:mail" />Contact me</a
           >
           <button
-            data-test="about-modal-understand1"
+            data-test="about-modal-understand"
             class="bg-blue-400 hover:bg-blue-500 py-2 px-4 rounded-md text-black font-medium"
             type="button"
             @click="showAboutModal = false"
