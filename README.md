@@ -27,7 +27,7 @@ Coming soon...
 
 # Gallery
 
-![image](https://os-windows11.vercel.app/images/preview/1.png)
+![image](https://os-windows11.vercel.app/_vercel/image?url=/images/preview/1.png&w=1536&q=60)
 
 # Why
 
