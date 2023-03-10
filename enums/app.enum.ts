@@ -1,4 +1,15 @@
 export enum AppEnum {
   fileExplorer = "file_explorer",
   microsoftEdge = "microsoft_edge",
+  mail = "mail",
+  calendar = "calendar",
+  microsoftStore = "microsoft_store",
+  photos = "photos",
+  settings = "settings",
+  calculator = "calculator",
+  clock = "clock",
+  notepad = "notepad",
+  paint = "paint",
+  moviesTv = "movies_tv",
+  netflix = "netflix",
 }

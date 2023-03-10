@@ -176,26 +176,7 @@
       </div>
     </div>
   </footer>
-  <teleport to="body">
-    <transition-expand no-opacity>
-      <div
-        v-if="showMenu"
-        class="fixed z-40 left-0 bottom-[59px] right-0 flex justify-center"
-      >
-        <div
-          ref="elStartMenu"
-          class="bg-[var(--el-footer-start-menu-bg-color)] border border-[var(--el-footer-start-menu-border-color)] backdrop-blur-[100px] w-[642px] h-[726px] flex flex-col rounded-lg overflow-hidden shadow-lg"
-        >
-          <div class="flex-1 h-full flex items-center justify-center">
-            Coming soon!
-          </div>
-          <div
-            class="h-[65px] bg-[var(--el-footer-start-menu-bg-bottom-color)] border-t border-[var(--el-footer-start-menu-border-bottom-color)] bg-opacity-30"
-          ></div>
-        </div>
-      </div>
-    </transition-expand>
-  </teleport>
+  <el-start-menu :show-menu="showMenu" @close="showMenu = false" />
   <lazy-el-context-menu :type="ContextMenuEnum.footer" :animation-expand="true">
     <ul class="context__menu-list context__menu-list--submenu w-[158px]">
       <el-context-menu-item>
@@ -220,9 +201,13 @@ import { useDockStore } from "~/store/dockStore";
 import { useDateFormat, useNow } from "@vueuse/core";
 import { AppEnum } from "~/enums/app.enum";
 import { ContextMenuEnum, useContextMenuStore } from "~/store/contextMenuStore";
+const ElStartMenu = defineAsyncComponent(
+  () => import("@/components/el/start-menu/ElStartMenu.vue")
+);
 
 const dockStore = useDockStore();
 const contextMenu = useContextMenuStore();
+const showMenu = ref(true);
 
 const { getLocation, weather, icon, name, loading, notSupported } =
   useWeather();
@@ -233,10 +218,6 @@ const currentDate = ref<any>(null);
 const currentDateShort = ref<any>(null);
 const alternativeDateShort = ref<any>(null);
 const currentDateFull = ref<any>(null);
-const showMenu = ref(false);
-const elStartMenu = ref<HTMLElement | null>(null);
-
-onClickOutside(elStartMenu, () => (showMenu.value = false));
 const { height } = useWindowSize();
 
 onMounted(() => {
@@ -298,11 +279,6 @@ footer {
   --el-footer-weather-text-color: #3e3e3e;
   /*TIME*/
   --el-footer-time-badge-color: #ffffff;
-  /*START MENU*/
-  --el-footer-start-menu-bg-color: var(--el-footer-bg-color);
-  --el-footer-start-menu-border-color: #3a3f48;
-  --el-footer-start-menu-bg-bottom-color: rgba(0, 0, 0, 0.3);
-  --el-footer-start-menu-border-bottom-color: rgba(0, 0, 0, 0.1);
 }
 
 [data-theme="theme2"] {
@@ -318,10 +294,5 @@ footer {
   --el-footer-weather-text-color: #a7a7a7;
   /*TIME*/
   --el-footer-time-badge-color: #000000;
-  /*START MENU*/
-  --el-footer-start-menu-bg-color: var(--el-footer-bg-color);
-  --el-footer-start-menu-border-color: #3a3f48;
-  --el-footer-start-menu-bg-bottom-color: rgba(0, 0, 0, 0.3);
-  --el-footer-start-menu-border-bottom-color: rgba(0, 0, 0, 0.1);
 }
 </style>
