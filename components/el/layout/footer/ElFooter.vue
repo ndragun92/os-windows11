@@ -7,7 +7,7 @@
   >
     <div class="flex justify-between items-center h-full pointer-events-none">
       <div>
-        <el-button
+        <global-button
           v-if="weather.data"
           :tooltip="`${weather.data?.weather?.temperature ?? 0}&deg;C ${name}`"
           class="gap-0.5 w-36 py-0.5 px-2 whitespace-nowrap"
@@ -15,7 +15,7 @@
           @click="log().onAlert('Coming soon')"
         >
           <template #icon>
-            <el-image
+            <global-image
               class="block w-[32px] h-[32px]"
               :src="`/images/weather/${icon}.png`"
               :alt="icon"
@@ -29,8 +29,8 @@
                 class="text-[var(--el-footer-weather-text-color)]"
                 v-text="name"
               /> </span></template
-        ></el-button>
-        <el-button
+        ></global-button>
+        <global-button
           v-else-if="!loading"
           :tooltip="
             notSupported
@@ -49,13 +49,13 @@
               <span>Warning</span>
               Hover to read</span
             ></template
-          ></el-button
+          ></global-button
         >
       </div>
       <div class="-ml-[65px] flex items-center">
         <ul class="flex items-center gap-[1px]">
           <li class="menu__link">
-            <el-button
+            <global-button
               tooltip="Start"
               class="w-10 h-10 px-2"
               :class="{ '!pointer-events-none': showMenu }"
@@ -66,7 +66,7 @@
               <template #icon>
                 <icon-start />
               </template>
-            </el-button>
+            </global-button>
           </li>
           <li class="mx-1">
             <div
@@ -83,7 +83,7 @@
                 placeholder="Search"
                 @keydown.enter="log().onAlert('Coming soon')"
               />
-              <el-image
+              <global-image
                 class="pointer-events-none block absolute -right-[3px] -bottom-[1px]"
                 src="/images/search-icons/1.png"
                 alt="Search dolphin"
@@ -94,7 +94,7 @@
         </ul>
         <ul class="flex items-center gap-[4px]">
           <li class="menu__link">
-            <el-button
+            <global-button
               tooltip="Coming soon"
               :class="['w-10 h-10 px-2']"
               :hover-scale="true"
@@ -104,12 +104,12 @@
                 <icon-multi-desktop class="w-6 h-6" />
               </template>
               <template #custom="{ active, focused }">
-                <el-button-active v-show="active" :focused="focused" />
+                <global-button-active v-show="active" :focused="focused" />
               </template>
-            </el-button>
+            </global-button>
           </li>
           <li class="menu__link">
-            <el-button
+            <global-button
               tooltip="File Explorer"
               :class="['w-10 h-10 px-2']"
               :hover-scale="true"
@@ -121,13 +121,13 @@
                 <icon-file-explorer class="w-6 h-6" />
               </template>
               <template #custom="{ active, focused }">
-                <el-button-active v-show="active" :focused="focused" />
+                <global-button-active v-show="active" :focused="focused" />
               </template>
-            </el-button>
+            </global-button>
           </li>
           <li class="menu__link">
             <client-only>
-              <el-button
+              <global-button
                 tooltip="Microsoft Edge"
                 :class="['w-10 h-10 px-2']"
                 :hover-scale="true"
@@ -139,15 +139,15 @@
                   <icon-microsoft-edge class="w-7 h-7" />
                 </template>
                 <template #custom="{ active, focused }">
-                  <el-button-active v-show="active" :focused="focused" />
+                  <global-button-active v-show="active" :focused="focused" />
                 </template>
-              </el-button>
+              </global-button>
             </client-only>
           </li>
         </ul>
       </div>
       <div>
-        <el-button
+        <global-button
           :tooltip="`${currentDateFull?.value} <br/> <br/> ${currentDateShort?.value} (Local time) <br/> ${alternativeDateShort} (London time)`"
           tooltip-position-y-custom="bottom-[calc(100%+15px)]"
           tooltip-class="text-left"
@@ -171,7 +171,7 @@
                 20
               </div>
             </div>
-          </template></el-button
+          </template></global-button
         >
       </div>
     </div>
@@ -196,23 +196,26 @@
       </div>
     </transition-expand>
   </teleport>
-  <lazy-el-context-menu :type="ContextMenuEnum.footer" :animation-expand="true">
+  <lazy-global-context-menu
+    :type="ContextMenuEnum.footer"
+    :animation-expand="true"
+  >
     <ul class="context__menu-list context__menu-list--submenu w-[158px]">
-      <el-context-menu-item>
+      <global-context-menu-item>
         <template #icon>
           <Icon size="20" name="material-symbols:monitor-heart-outline-sharp" />
         </template>
         Task manager
-      </el-context-menu-item>
-      <el-context-menu-divider />
-      <el-context-menu-item>
+      </global-context-menu-item>
+      <global-context-menu-divider />
+      <global-context-menu-item>
         <template #icon>
           <Icon size="20" name="heroicons:cog-8-tooth" />
         </template>
         Taskbar settings
-      </el-context-menu-item>
+      </global-context-menu-item>
     </ul>
-  </lazy-el-context-menu>
+  </lazy-global-context-menu>
 </template>
 
 <script setup lang="ts">

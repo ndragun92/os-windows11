@@ -4,10 +4,10 @@
       ref="elContextMenuDesktopView"
       class="context__menu-list context__menu-list--submenu w-[121px]"
     >
-      <el-context-menu-item>Name</el-context-menu-item>
-      <el-context-menu-item>Size</el-context-menu-item>
-      <el-context-menu-item>Item type</el-context-menu-item>
-      <el-context-menu-item>Date modified</el-context-menu-item>
+      <global-context-menu-item>Name</global-context-menu-item>
+      <global-context-menu-item>Size</global-context-menu-item>
+      <global-context-menu-item>Item type</global-context-menu-item>
+      <global-context-menu-item>Date modified</global-context-menu-item>
     </ul>
   </div>
 </template>

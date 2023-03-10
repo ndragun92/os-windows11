@@ -23,7 +23,7 @@ export default {
 
 <script lang="ts" setup>
 import { usePersonalizationStore } from "~/store/personalizationStore";
-import ElFooter from "~/components/el/layout/ElFooter.vue";
+import ElFooter from "~/components/el/layout/footer/ElFooter.vue";
 
 const usePersonalization = usePersonalizationStore();
 const $img = useImage();
