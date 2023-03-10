@@ -28,13 +28,34 @@ jobs:
       with:
         node-version: 18
 
+    - name: 💤 Wait for 30 seconds
+      run: |
+        echo "Waiting for 30 seconds..."
+        sleep 30
+        echo "Ready to run tests!"
+
+    - name: 📢 Set environment variable based on branch
+      run: |
+        if [ "$GITHUB_REF" = "refs/heads/main" ]; then
+          echo "Setting BASE_URL to main_value"
+          echo "BASE_URL=https://os-windows11.vercel.app" >> $GITHUB_ENV
+        elif [ "$GITHUB_REF" = "refs/heads/dev" ]; then
+          echo "Setting BASE_URL to develop_value"
+          echo "BASE_URL=https://os-windows11-git-dev-ndragun92.vercel.app" >> $GITHUB_ENV
+        else
+          echo "Setting BASE_URL to default_value"
+          echo "BASE_URL=http://localhost:3000" >> $GITHUB_ENV
+        fi
+
+    - name: ⭐ Echo Variables
+      run: |
+        echo "BASE_URL is set to $BASE_URL"
+
     - name: 📦 Install dependencies
       run: npm ci
 
     - name: ⌛ Install Playwright Browsers
       run: npx playwright install --with-deps
-      env:
-        BASE_URL: "http://localhost:3000"
 
     - name: 🧪 Run Playwright Tests
       run: npx playwright test
