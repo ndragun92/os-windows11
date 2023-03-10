@@ -28,40 +28,22 @@ jobs:
       with:
         node-version: 18
 
+    - name: ⌛ Wait for 1 minute and 30 seconds
+      run: |
+        echo "Waiting for 1 minute and 30 seconds..."
+        sleep 90
+        echo "Ready to run tests!"
+
     - name: 📦 Install dependencies
       run: npm ci
 
-    - name: ⌛ Install Playwright Browsers
+    - name: ⭐ Install Playwright Browsers
       run: npx playwright install --with-deps
 
-    - name: ⚡ Debug environment variables 1
-      env:
-        BASE_URL: ${{ github.event.deployment_status.target_url }}
-      run: |
-        echo "BASE_URL: $BASE_URL"
-
-    - name: ⚡ Debug environment variables 2
-      run: |
-        echo "BASE_URL2: $BASE_URL2"
-      env:
-        BASE_URL2: "https://os-windows11.vercel.app"
-
-    - name: ⚡ Debug environment variables 3
-      env:
-        BASE_URL3: "https://os-windows11.vercel.app"
-      run: |
-        echo "BASE_URL3: $BASE_URL3"
-
-    - name: ⚡ Debug environment variables 4
-      run: |
-        echo "BASE_URL2: $BASE_URL2"
-
     - name: 🧪 Run Playwright Tests
-      run: |
-        npx playwright test
-        echo "BASE_URL2: BASE_URL2"
+      run: npx playwright test
       env:
-        BASE_URL: ${{ github.event.deployment_status.target_url }}
+        BASE_URL: "https://os-windows11.vercel.app"
 
     - uses: actions/upload-artifact@v3
       if: always()
