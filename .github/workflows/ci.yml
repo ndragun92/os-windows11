@@ -34,6 +34,12 @@ jobs:
     - name: ⌛ Install Playwright Browsers
       run: npx playwright install --with-deps
 
+    - name: ⚡ Debug environment variables
+      run: |
+        echo "BASE_URL: $BASE_URL"
+      env:
+        BASE_URL: ${{ github.event.deployment_status.target_url }}
+
     - name: 🧪 Run Playwright Tests
       run: npx playwright test
       env:
