@@ -15,6 +15,8 @@
     <slot name="icon" />
     <slot name="name" />
     <slot name="custom" :active="active" :focused="focused" />
+    <!-- TODO: Try to make tooltip append to body in certain cases and memorize
+    position -->
     <span
       v-if="props.tooltip"
       class="button__tooltip"

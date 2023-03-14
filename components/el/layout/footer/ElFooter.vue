@@ -18,6 +18,8 @@
           class="gap-0.5 w-36 py-0.5 px-2 whitespace-nowrap"
           justify="start"
           @click="log().onAlert('Coming soon')"
+          @mouseover="showWeatherWidget = true"
+          @mouseleave="showWeatherWidget = false"
         >
           <template #icon>
             <global-image
@@ -221,6 +223,7 @@
       </global-context-menu-item>
     </ul>
   </lazy-global-context-menu>
+  <lazy-global-weather-widget :visible="showWeatherWidget" />
 </template>
 
 <script setup lang="ts">
@@ -242,6 +245,7 @@ const currentDateShort = ref<any>(null);
 const alternativeDateShort = ref<any>(null);
 const currentDateFull = ref<any>(null);
 const showMenu = ref(false);
+const showWeatherWidget = ref(false);
 const elStartMenu = ref<HTMLElement | null>(null);
 
 onClickOutside(elStartMenu, () => (showMenu.value = false));
