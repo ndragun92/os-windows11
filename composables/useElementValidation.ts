@@ -1,5 +1,5 @@
 export default function useElementValidation() {
-  const isOutOfViewport = (elem: HTMLElement | undefined) => {
+  const isOutOfViewport = (elem: HTMLElement | undefined | null) => {
     if (!elem) return;
     // Get element's bounding
     const bounding = elem.getBoundingClientRect();
