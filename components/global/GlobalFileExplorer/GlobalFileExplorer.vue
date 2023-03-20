@@ -64,7 +64,7 @@
           dockStore.isFocused(AppEnum.fileExplorer)
             ? 'bg-[var(--GlobalFileExplorer-header-color-focused)] border-[var(--GlobalFileExplorer-header-border-bottom-color-focused)]'
             : 'bg-[var(--GlobalFileExplorer-header-color)] border-[var(--GlobalFileExplorer-header-border-bottom-color)]',
-          maximized ? 'h-auto' : 'h-11',
+          maximized ? 'h-auto' : 'h-[39px]',
         ]"
       >
         <div
@@ -76,7 +76,7 @@
           class="relative h-full flex items-end gap-0.5 px-2 pointer-events-none"
         >
           <li
-            class="pointer-events-auto -mb-[1px] w-[25%] max-w-[240px] rounded-tr-md rounded-tl-md h-9 flex items-center px-3 text-xs"
+            class="pointer-events-auto -mb-[1px] w-[25%] max-w-[240px] rounded-tr-lg rounded-tl-lg h-[30px] flex items-center pl-[6px] pr-[10px] text-xs"
             :class="
               dockStore.isFocused(AppEnum.fileExplorer)
                 ? 'bg-[var(--GlobalFileExplorer-tab-color-focused)] border-t border-r border-l border-[var(--GlobalFileExplorer-tab-border-color-focused)]'
@@ -111,7 +111,7 @@
         </ul>
       </div>
       <div
-        class="h-[54px] border-b border-[var(--GlobalFileExplorer-border-color)]"
+        class="h-[55px] border-b border-[var(--GlobalFileExplorer-border-color)]"
         :class="
           dockStore.isFocused(AppEnum.fileExplorer)
             ? 'bg-[var(--GlobalFileExplorer-tab-color-focused)]'
@@ -119,12 +119,22 @@
         "
       ></div>
       <div
-        class="flex-1 max-h-full overflow-hidden bg-[var(--GlobalFileExplorer-container-color)] p-2"
+        class="flex-1 max-h-full overflow-hidden bg-[var(--GlobalFileExplorer-container-color)]"
       >
-        <div class="w-full h-full flex items-center justify-center">
-          <Icon class="mr-2" size="24" name="fluent-emoji-flat:warning" />
-          File Explorer is under construction...
+        <div class="w-full h-full">
+          <div class="h-[52px] w-full">
+            <div class="flex items-center gap-[10px] px-[10px]">
+              <div>Left</div>
+              <div class="flex-1">Center</div>
+              <div>Right</div>
+            </div>
+          </div>
+          <div class="h-full p-4">Coming soon!</div>
         </div>
+        <!--        <div class="w-full h-full flex items-center justify-center">-->
+        <!--          <Icon class="mr-2" size="24" name="fluent-emoji-flat:warning" />-->
+        <!--          File Explorer is under construction...-->
+        <!--        </div>-->
       </div>
       <div class="flex items-center justify-between h-8 pl-4">
         <div>
