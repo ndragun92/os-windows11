@@ -95,10 +95,10 @@
               </div>
             </div>
           </li>
-          <li class="pointer-events-auto ml-2 mb-1">
+          <li class="pointer-events-auto ml-[5px] mb-[2px]">
             <button
               type="button"
-              class="h-7 w-10 flex items-center justify-center rounded-md"
+              class="h-6 w-8 flex items-center justify-center rounded-md"
               :class="
                 dockStore.isFocused(AppEnum.fileExplorer)
                   ? 'hover:bg-[var(--GlobalFileExplorer-tab-color-focused)]'
