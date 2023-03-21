@@ -76,7 +76,7 @@
           class="relative h-full flex items-end gap-0.5 px-2 pointer-events-none"
         >
           <li
-            class="pointer-events-auto -mb-[1px] w-[25%] max-w-[240px] rounded-tr-lg rounded-tl-lg h-[30px] flex items-center pl-[6px] pr-[10px] text-xs"
+            class="pointer-events-auto -mb-[1px] w-[25%] max-w-[240px] rounded-tr-lg rounded-tl-lg h-[30px] flex items-center pl-[8px] pr-[10px] text-xs"
             :class="
               dockStore.isFocused(AppEnum.fileExplorer)
                 ? 'bg-[var(--GlobalFileExplorer-tab-color-focused)] border-t border-r border-l border-[var(--GlobalFileExplorer-tab-border-color-focused)]'
@@ -84,8 +84,11 @@
             "
           >
             <div class="w-full flex items-center justify-between gap-2">
-              <div class="flex items-center gap-2">
-                <Icon size="18" name="fluent-emoji:derelict-house" />
+              <div class="flex items-center gap-[10px]">
+                <global-image
+                  class="w-[16px] h-[16px]"
+                  src="/images/icons/home.png"
+                />
                 <span>Home</span>
               </div>
               <div>
@@ -184,7 +187,10 @@
                     <ul class="flex items-center gap-[2px]">
                       <li>
                         <div class="flex items-center justify-center h-[30px]">
-                          <Icon size="18" name="fluent-emoji:derelict-house" />
+                          <global-image
+                            class="w-[16px] h-[16px]"
+                            src="/images/icons/home.png"
+                          />
                         </div>
                       </li>
                       <li>
@@ -204,7 +210,7 @@
                           class="h-[30px] rounded-[0] px-[4px] text-xs"
                           :disable-shadow="true"
                         >
-                          <template #name>Downloads</template>
+                          <template #name>Home</template>
                         </global-button>
                       </li>
                     </ul>
