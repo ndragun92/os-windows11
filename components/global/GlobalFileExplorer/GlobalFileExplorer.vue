@@ -64,7 +64,7 @@
           dockStore.isFocused(AppEnum.fileExplorer)
             ? 'bg-[var(--GlobalFileExplorer-header-color-focused)] border-[var(--GlobalFileExplorer-header-border-bottom-color-focused)]'
             : 'bg-[var(--GlobalFileExplorer-header-color)] border-[var(--GlobalFileExplorer-header-border-bottom-color)]',
-          maximized ? 'h-auto' : 'h-[39px]',
+          maximized ? 'h-[32px]' : 'h-[39px]',
         ]"
       >
         <div
