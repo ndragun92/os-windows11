@@ -18,6 +18,8 @@
           class="gap-0.5 w-36 py-0.5 px-2 whitespace-nowrap"
           justify="start"
           @click="log().onAlert('Coming soon')"
+          @mouseover="onOpenWeatherWidget"
+          @mouseleave="onCloseWeatherWidget"
         >
           <template #icon>
             <global-image
@@ -221,11 +223,21 @@
       </global-context-menu-item>
     </ul>
   </lazy-global-context-menu>
+  <lazy-global-weather-widget
+    :visible="showWeatherWidget"
+    @focused="preventWeatherClose = true"
+    @close="
+      () => {
+        showWeatherWidget = false;
+        preventWeatherClose = false;
+      }
+    "
+  />
 </template>
 
 <script setup lang="ts">
 import { useDockStore } from "~/store/dockStore";
-import { useDateFormat, useNow } from "@vueuse/core";
+import { promiseTimeout, useDateFormat, useNow } from "@vueuse/core";
 import { AppEnum } from "~/enums/app.enum";
 import { ContextMenuEnum, useContextMenuStore } from "~/store/contextMenuStore";
 
@@ -242,6 +254,8 @@ const currentDateShort = ref<any>(null);
 const alternativeDateShort = ref<any>(null);
 const currentDateFull = ref<any>(null);
 const showMenu = ref(false);
+const showWeatherWidget = ref(false);
+const preventWeatherClose = ref(false);
 const elStartMenu = ref<HTMLElement | null>(null);
 
 onClickOutside(elStartMenu, () => (showMenu.value = false));
@@ -256,6 +270,16 @@ onMounted(() => {
     .tz("Europe/London")
     .format("ddd HH:mm");
 });
+
+const onOpenWeatherWidget = async () => {
+  await promiseTimeout(500);
+  showWeatherWidget.value = true;
+};
+
+const onCloseWeatherWidget = async () => {
+  await promiseTimeout(500);
+  if (!preventWeatherClose.value) showWeatherWidget.value = false;
+};
 </script>
 
 <style lang="scss" scoped>

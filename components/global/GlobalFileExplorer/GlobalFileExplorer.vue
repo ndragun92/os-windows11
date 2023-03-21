@@ -64,7 +64,7 @@
           dockStore.isFocused(AppEnum.fileExplorer)
             ? 'bg-[var(--GlobalFileExplorer-header-color-focused)] border-[var(--GlobalFileExplorer-header-border-bottom-color-focused)]'
             : 'bg-[var(--GlobalFileExplorer-header-color)] border-[var(--GlobalFileExplorer-header-border-bottom-color)]',
-          maximized ? 'h-auto' : 'h-11',
+          maximized ? 'h-auto' : 'h-[39px]',
         ]"
       >
         <div
@@ -76,7 +76,7 @@
           class="relative h-full flex items-end gap-0.5 px-2 pointer-events-none"
         >
           <li
-            class="pointer-events-auto -mb-[1px] w-[25%] max-w-[240px] rounded-tr-md rounded-tl-md h-9 flex items-center px-3 text-xs"
+            class="pointer-events-auto -mb-[1px] w-[25%] max-w-[240px] rounded-tr-lg rounded-tl-lg h-[30px] flex items-center pl-[6px] pr-[10px] text-xs"
             :class="
               dockStore.isFocused(AppEnum.fileExplorer)
                 ? 'bg-[var(--GlobalFileExplorer-tab-color-focused)] border-t border-r border-l border-[var(--GlobalFileExplorer-tab-border-color-focused)]'
@@ -95,10 +95,10 @@
               </div>
             </div>
           </li>
-          <li class="pointer-events-auto ml-2 mb-1">
+          <li class="pointer-events-auto ml-[5px] mb-[2px]">
             <button
               type="button"
-              class="h-7 w-10 flex items-center justify-center rounded-md"
+              class="h-6 w-8 flex items-center justify-center rounded-md"
               :class="
                 dockStore.isFocused(AppEnum.fileExplorer)
                   ? 'hover:bg-[var(--GlobalFileExplorer-tab-color-focused)]'
@@ -111,7 +111,7 @@
         </ul>
       </div>
       <div
-        class="h-[54px] border-b border-[var(--GlobalFileExplorer-border-color)]"
+        class="h-[55px] border-b border-[var(--GlobalFileExplorer-border-color)]"
         :class="
           dockStore.isFocused(AppEnum.fileExplorer)
             ? 'bg-[var(--GlobalFileExplorer-tab-color-focused)]'
@@ -119,12 +119,152 @@
         "
       ></div>
       <div
-        class="flex-1 max-h-full overflow-hidden bg-[var(--GlobalFileExplorer-container-color)] p-2"
+        class="flex-1 max-h-full overflow-hidden bg-[var(--GlobalFileExplorer-container-color)]"
       >
-        <div class="w-full h-full flex items-center justify-center">
-          <Icon class="mr-2" size="24" name="fluent-emoji-flat:warning" />
-          File Explorer is under construction...
+        <div class="w-full h-full">
+          <div class="h-[52px] w-full flex items-center">
+            <div class="w-full flex items-center gap-[10px] px-[10px]">
+              <div>
+                <ul class="flex items-center gap-[5px]">
+                  <li>
+                    <global-button
+                      class="w-[28px] h-[28px] rounded-sm"
+                      :disable-shadow="true"
+                    >
+                      <template #icon
+                        ><Icon
+                          size="20"
+                          name="material-symbols:arrow-back-rounded"
+                      /></template>
+                    </global-button>
+                  </li>
+                  <li>
+                    <global-button
+                      class="w-[28px] h-[28px] rounded-sm"
+                      :disable-shadow="true"
+                    >
+                      <template #icon
+                        ><Icon
+                          size="20"
+                          name="material-symbols:arrow-forward-rounded"
+                      /></template>
+                    </global-button>
+                  </li>
+                  <li>
+                    <global-button
+                      class="w-[20px] h-[28px] rounded-sm"
+                      :disable-shadow="true"
+                    >
+                      <template #icon
+                        ><Icon
+                          size="20"
+                          name="material-symbols:keyboard-arrow-down-rounded"
+                      /></template>
+                    </global-button>
+                  </li>
+                  <li>
+                    <global-button
+                      class="w-[28px] h-[28px] rounded-sm"
+                      :disable-shadow="true"
+                    >
+                      <template #icon
+                        ><Icon
+                          size="20"
+                          name="material-symbols:arrow-upward-rounded"
+                      /></template>
+                    </global-button>
+                  </li>
+                </ul>
+              </div>
+              <div class="flex-1 w-full">
+                <div
+                  class="w-full border border-[var(--GlobalFileExplorer-search-border-color)] h-[34px] pl-[8px] flex items-center"
+                >
+                  <div class="flex justify-between w-full">
+                    <ul class="flex items-center gap-[2px]">
+                      <li>
+                        <div class="flex items-center justify-center h-[30px]">
+                          <Icon size="18" name="fluent-emoji:derelict-house" />
+                        </div>
+                      </li>
+                      <li>
+                        <global-button
+                          class="h-[30px] rounded-[0]"
+                          :disable-shadow="true"
+                        >
+                          <template #icon
+                            ><Icon
+                              size="14"
+                              name="material-symbols:chevron-right-rounded"
+                          /></template>
+                        </global-button>
+                      </li>
+                      <li>
+                        <global-button
+                          class="h-[30px] rounded-[0] px-[4px] text-xs"
+                          :disable-shadow="true"
+                        >
+                          <template #name>Downloads</template>
+                        </global-button>
+                      </li>
+                    </ul>
+                    <ul class="mr-[1px] flex items-center gap-[2px]">
+                      <li>
+                        <global-button
+                          class="w-[30px] h-[30px] rounded-[0]"
+                          :disable-shadow="true"
+                        >
+                          <template #icon
+                            ><Icon
+                              size="20"
+                              name="material-symbols:keyboard-arrow-down-rounded"
+                          /></template>
+                        </global-button>
+                      </li>
+                      <li>
+                        <global-button
+                          class="w-[30px] h-[30px] rounded-[0]"
+                          :disable-shadow="true"
+                        >
+                          <template #icon
+                            ><Icon
+                              size="18"
+                              name="material-symbols:refresh-rounded"
+                          /></template>
+                        </global-button>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div
+                  class="w-[340px] border border-[var(--GlobalFileExplorer-search-border-color)] h-[34px] flex items-center relative"
+                >
+                  <input
+                    class="bg-transparent w-full h-full pl-[8px] text-xs focus:outline-none"
+                    type="text"
+                    placeholder="Search Downloads"
+                  />
+                  <div
+                    class="absolute right-0 top-0 bottom-0 flex items-center justify-center w-[30px] mr-[8px]"
+                  >
+                    <Icon
+                      class="stroke-[var(--GlobalFileExplorer-search-border-color)]"
+                      size="16"
+                      name="icons8:search"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="h-full p-4">Coming soon!</div>
         </div>
+        <!--        <div class="w-full h-full flex items-center justify-center">-->
+        <!--          <Icon class="mr-2" size="24" name="fluent-emoji-flat:warning" />-->
+        <!--          File Explorer is under construction...-->
+        <!--        </div>-->
       </div>
       <div class="flex items-center justify-between h-8 pl-4">
         <div>
@@ -280,6 +420,7 @@ watch(
   --GlobalFileExplorer-wrapper-color: #ffffff;
   --GlobalFileExplorer-container-color: #ffffff;
   --GlobalFileExplorer-border-color: #bccdd9;
+  --GlobalFileExplorer-search-border-color: #535353;
 }
 
 [data-theme="theme2"] {
@@ -294,5 +435,6 @@ watch(
   --GlobalFileExplorer-wrapper-color: #1c1c1c;
   --GlobalFileExplorer-container-color: #191919;
   --GlobalFileExplorer-border-color: #3a3a3a;
+  --GlobalFileExplorer-search-border-color: #535353;
 }
 </style>

@@ -7,7 +7,10 @@
       'hover:bg-[var(--GlobalButton-bg-color--hover)]',
       {
         'hover-scale': props.hoverScale,
-        'bg-[var(--GlobalButton-bg-color--focused)] top-shadow': props.focused,
+        [`bg-[var(--GlobalButton-bg-color--focused)] ${
+          props.disableShadow ? '' : 'top-shadow'
+        }`]: props.focused,
+        'shadow--disabled': props.disableShadow,
       },
     ]"
     type="button"
@@ -15,6 +18,8 @@
     <slot name="icon" />
     <slot name="name" />
     <slot name="custom" :active="active" :focused="focused" />
+    <!-- TODO: Try to make tooltip append to body in certain cases and memorize
+    position -->
     <span
       v-if="props.tooltip"
       class="button__tooltip"
@@ -40,6 +45,7 @@ const props = defineProps<{
   hoverScale?: boolean;
   active?: boolean;
   focused?: boolean;
+  disableShadow?: boolean;
 }>();
 </script>
 
@@ -61,8 +67,12 @@ button {
       }
     }
   }
+  &:not(.shadow--disabled) {
+    &:hover {
+      @apply top-shadow;
+    }
+  }
   &:hover {
-    @apply top-shadow;
     .button__tooltip {
       @apply opacity-100 delay-700;
     }
